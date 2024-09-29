@@ -8,7 +8,7 @@
 
 
     <!-- content  -->
-    <div class="bg-gradient-to-tr  pt-10 relative z-10 px-10 md:px-20">
+    <div class="bg-gradient-to-tr  pt-10 relative z-10 px-10 md:px-20 animate-slidein  opacity-0 [--slidein-delay:600ms]">
         <img src="{% static 'assets/logo.png' %}" alt="SGS" class="w-40 md mx-auto">
         <h1 class="text-2xl md:text-4xl text-center font-normal tracking-tighter">Sila Global Solution</h1>
     
@@ -57,8 +57,13 @@ governments, universities, & various other groups to facilitate technology trans
     </p>
 </div>  
 
-{% include "components/core-services.html" %}
+<div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+    {% include "components/core-services.html" %}
+</div>
+
+<div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
 {% include "components/contacts.html" %}
+</div>
 
 {% endblock full_screen %}
 
