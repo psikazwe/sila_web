@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="flex items-base justify-between gap-5 col-span-2 mb-10">
+
+  {% if request.GET.next %}
+    <a href="{{ request.GET.next }}" class="text-sm"><i class="fa-solid fa-arrow-left"></i> Back to Category</a>
+  {% else %}
+    <a href="{% url 'admin:affiliate-list' %}" class="text-sm"><i class="fa-solid fa-arrow-left"></i> Back to List</a>
+  {% endif %}
+</div>
+
+  <h2 class="font-bold text-2xl mb-5">{{ affiliate.name }}</h2>
+  <p class="text-sm text-gray-600">{{ affiliate.description }}</p>
+  <div class="flex items-center gap-4 my-10">
+    <a href="{% url 'admin:affiliate-update' affiliate.id %}" class="button dashed"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+    <a href="{% url 'admin:affiliate-delete' affiliate.id %}" class="button danger"> <i class="fa-regular fa-trash-can"></i> Delete</a>
+  </div>
+
+<hr class="my-10"/>
+<div class="title">Services</div>
+<div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-20">
+
+  {% for service in affiliate.services.all %}
+    <a href="{% url 'admin:service-detail' service.id %}?next={{request.path}}">
+      <div class="card">
+        <div class="aspect-[5/2] bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill grid place-items-center relative">
+          <!-- Check if the cover image exists -->
+          {% if service.cover %}
+            <img src="{{ service.cover.url }}" alt="{{ service.name }}" loading="lazy"/>
+          {% else %}
+            <i class="fa-regular fa-file-image text-4xl text-gray-200"></i>
+          {% endif %}
+          
+        </div>
+        <div class="content">
+          <h1 class="title">{{service.name}}</h1>
+          <div class="badge success">Active</div>
+        </div>
+      </div>  
+    </a>
+
+  {% endfor %}
+
+
+</div>
+{% endblock %}

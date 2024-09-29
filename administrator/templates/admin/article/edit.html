@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="form-container">
+    <h2 class="title mb-5">Edit Article: {{ service.name }}</h2>
+    <div class="aspect-[4/2]  rounded-lg bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill">
+      <!-- Check if the cover image exists -->
+      {% if service.cover %}
+        <img src="{{ service.cover.url }}" alt="{{ service.name }}" />
+      {% else %}
+        <!-- Fallback to a default image if the cover image doesn't exist -->
+        <img src="{% static 'images/default_cover.jpg' %}" alt="{{ service.name }}" />
+      {% endif %}
+    </div>
+    <form method="post"  enctype="multipart/form-data" class="space-y-2">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="field">
+          <label for="{{ field.auto_id }}">{{ field.label }}</label>
+          {{ field }}
+        </div>
+      {% endfor %}
+      {{ form.media }}
+      <div class="action-buttons mt-5">
+        <button type="submit" class="button primary">Update</button>
+        <a href="{% url 'admin:service-list' %}"> <div  class='button dashed'> Cancel</div> </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

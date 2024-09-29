@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  
+  
+  
+
+  <div class="flex items-base justify-between gap-5 col-span-2">
+    <a href="{% url 'admin:article-list' %}" class="text-sm">&larr; Back to Articles</a>
+  </div>
+
+  <div class='article-container'>
+
+    
+    <div class=" my-5">
+    
+      <div class="aspect-[5/2]  rounded-lg bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill">
+        <!-- Check if the cover image exists -->
+        {% if article.cover %}
+          <img src="{{ article.cover.url }}" alt="{{ article.name }}" loading="lazy"/>
+        {% else %}
+          <!-- Fallback to a default image if the cover image doesn't exist -->
+          <img src="{% static 'images/default_cover.jpg' %}" alt="{{ article.name }}" loading="lazy"/>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="my-10">
+      <h1 class="title">{{  article.title }} </h1>
+      <a href="{% url 'admin:service-detail' article.service.id %}"><sub class="text-gray-500">{{ article.service }}</sub></a>   - 
+      <sub class="text-gray-500">{{ article.published_at }}</sub>
+      
+
+      <div class="flex items-center gap-4 my-5">
+        <a href="{% url 'admin:article-update' article.id %}" class="button dashed"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+        <a href="{% url 'admin:article-delete' article.id %}" class="button danger"> <i class="fa-regular fa-trash-can"></i> Delete</a>
+      </div>
+    </div>
+
+    {{ article.body|safe }}
+
+  </div>
+
+{% endblock %}

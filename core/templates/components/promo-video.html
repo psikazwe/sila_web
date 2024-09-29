@@ -1,0 +1,28 @@
+{% load static %}
+<section class="md:p-20 pb-10">
+
+    <div class="grid md:grid-cols-2 gap-20 mx-auto max-w-screen-2xl">
+
+        <div class="aspect-[2/1] bg-slate-900 rounded-md overflow-hidden grid place-items-center">
+            <h2 class="text-slate-300 absolute z-0">Promo Video</h2>
+            <video 
+                class="w-auto h-auto max-w-full max-h-full relative z-10"
+                src="{% static 'assets/holding.mp4' %}" 
+                controls 
+                autoplay="true"
+                loop
+            ></video>
+        </div>
+
+        <div class="relative grid place-items-center">
+            <div class="w-full">
+                <p class="text">
+                    SILA USA & SILA SOLUTIONS, in collaboration with AEEML (Agriculture, Education, Energy, Medical & Logistics), leads a comprehensive industrial platform in Africa. We cultivate organic and non-organic crops, operate sawmills, and run industrial hemp and food processing plants. By connecting U.S. businesses with African resources, we enhance global food production, reduce logistical challenges, create jobs, and support sustainability. AI-driven aquaculture, water desalination, and workforce development reinforce our commitment to innovation and eco-friendly solutions.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>

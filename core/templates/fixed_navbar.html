@@ -1,0 +1,84 @@
+{% load static %}
+<header class="header fit" id="navbar">
+    <div class="w-screen flex justify-between gap-2 px-10 md:px-20">
+        <div class="flex items-center gap-5 md:gap-10">
+            <a href="{% url 'core:landing' %}">
+                <div class="logo">
+                    <img src="{% static 'assets/logo.png' %}" alt="SGS" class="w-10 scale-110">
+                </div>
+            </a>
+
+    
+            <nav class="links">
+                <a href="{% url 'core:landing' %}">Home</a>
+                <a href="{% url 'core:us' %}">About Us</a>
+                <a href="{% url 'core:service' %}">Services</a>
+                {% comment %} <a href="#">News</a> {% endcomment %}
+                <a href="{% url 'core:team' %}?order=a">Affiliates</a>
+            </nav>
+        </div>
+
+
+        <div class="flex items-center gap-10">
+
+            <div class="links !text-xl">
+                
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+            </div>
+            
+
+             <div class="hidden">
+                 {% if request.user.is_authenticated %}
+                     <a href="{% url 'client:index' %}">My Account</a>
+                 {% else %}
+                     <a href="{% url 'core:login' %}">
+                        <i class="fa-regular fa-user text-sm mr-1.5"></i>
+                         Login
+                      </a>
+                 {% endif %}
+             </div>
+        </div>
+
+        
+        <button id="menu-button" class="md:hidden">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        
+        
+    </div>
+    <div class="nav-dropdown">
+        <nav class="links">
+            <a href="{% url 'core:landing' %}">Home</a>
+            <a href="{% url 'core:us' %}">About Us</a>
+            <a href="{% url 'core:service' %}">Services</a>
+            {% comment %} <a href="#">News</a> {% endcomment %}
+            <a href="{% url 'core:team' %}?order=a">Affiliates</a>
+        </nav>
+
+        <ul class="flex flex-wrap gap-5 mt-10 text-xl list-disc">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+        </ul>
+    </div>
+</header>

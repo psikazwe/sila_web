@@ -1,0 +1,104 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  
+  
+  
+
+  <div class="flex items-base justify-between gap-5 col-span-2">
+
+    {% if request.GET.next %}
+      <a href="{{ request.GET.next }}" class="text-sm"><i class="fa-solid fa-arrow-left"></i> Back to Category</a>
+    {% else %}
+      <a href="{% url 'admin:service-list' %}" class="text-sm"><i class="fa-solid fa-arrow-left"></i> Back to Services</a>
+    {% endif %}
+  </div>
+
+  <div class="grid lg:grid-cols-4 xl:grid-cols-5 gap-10 my-10">
+  
+    <div class="aspect-[4/2]  rounded-lg bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill grid place-items-center">
+      <!-- Check if the cover image exists -->
+      {% if service.cover %}
+        <img src="{{ service.cover.url }}" alt="{{ service.name }}" loading="lazy"/>
+      {% else %}
+        <i class="fa-regular fa-file-image text-4xl text-gray-200"></i>
+      {% endif %}
+    </div>
+
+    <div class="lg:col-span-2  xl:col-span-3 flex flex-col">
+      <div class="flex-grow">
+        <h2 class="title">{{ service.name }}</h2>
+        <p class="text-sm text-gray-500">category: <a href="{% url 'admin:category-detail' service.category.id %}" class="link">{{ service.category }}</a></p>
+        <p class="my-5 text-sm">{{ service.description }}</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="{% url 'admin:service-update' service.id %}" class="button dashed"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+        <a href="{% url 'admin:service-delete' service.id %}" class="button danger"> <i class="fa-regular fa-trash-can"></i> Delete</a>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="my-10">
+
+
+
+  <div>
+
+    <div class="stat-row">
+      <div class="name">
+        <i class="fa-regular fa-star"></i>
+        Promotions
+      </div>
+      <div class="stat">
+        <div class="value">{{service.get_promotions.active|length}}</div>
+        <div class="status">Active</div>
+      </div>
+      
+      <div class="stat">
+        <div class="value">{{service.get_promotions.inactive|length}}</div>
+        <div class="status">Inactive</div>
+      </div>
+
+    </div>
+
+    <div class="stat-row">
+      <div class="name">
+        <a href="{% url 'admin:article-list' %}?service={{service.id}} ">
+          <i class="fa-regular fa-newspaper"></i>
+          Articles
+        </a>
+      </div>
+      <div class="stat">
+        <div class="value">{{service.get_articles.active|length}}</div>
+        <div class="status">Active</div>
+      </div>
+      
+      <div class="stat">
+        <div class="value">{{service.get_articles.archived|length}}</div>
+        <div class="status">Archived</div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="name">
+        <i class="fa-regular fa-address-book"></i>
+        Applicants
+      </div>
+      <div class="stat">
+        <div class="value">50</div>
+        <div class="status">Waitlisted</div>
+      </div>
+      
+      <div class="stat">
+        <div class="value">50</div>
+        <div class="status">Sponsored</div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

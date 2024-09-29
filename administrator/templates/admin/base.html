@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|stringformat:"s"|add:" Administrator" }}</title>
+
+    <link rel="stylesheet" href="{% static "admin/css/admin-output.css" %}">
+    <link rel="stylesheet" href="{% static "css/fontawesome/css/all.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+
+    
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" /> {% endcomment %}
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static "css/semantic.min.css" %}">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+        <script src="{% static "js/semantic.min.js " %}"></script> {% endcomment %}
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+                    
+    <aside class="sidebar">
+        <a href="{% url "admin:index" %}" class='mb-5'>
+            SGS
+        </a>
+        <div class="flex flex-col justify-between flex-1 mt-6">
+            <nav>
+                <a  href="{% url "admin:index" %}">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="mx-4 font-medium">Dashboard</span>
+                </a>
+
+                <a href="{% url "admin:article-list" %}">
+                    <i class="fa-regular fa-newspaper"></i>
+                    <span class="mx-4 font-medium">Articles</span>
+                </a>
+
+                <a href="{% url "admin:service-list" %}">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span class="mx-4 font-medium">Services</span>
+                </a>
+
+                <a href="{% url "admin:category-list" %}">
+                    <i class="fa-brands fa-buffer"></i>
+                    <span class="mx-4 font-medium">Category</span>
+                </a>
+
+                <a href="{% url "admin:user-list" %}">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="mx-4 font-medium">Users</span>
+                </a>
+
+                <a href="{% url "admin:affiliate-list" %}">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="mx-4 font-medium">Affiliates</span>
+                </a>
+
+                <a href="{% url "admin:member-list" %}">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="mx-4 font-medium">Members</span>
+                </a>
+            </nav>
+        </div>
+
+        
+        <a href="{% url "core:logout" %}">
+            <i class="fa-brands fa-buffer"></i>
+            <span class="mx-4 font-medium">Logout</span>
+        </a>
+    </aside>
+
+    <main class="ml-48 px-10 md:px-20 py-5 md:py-10  min-h-screen">
+        <div class='max-w-screen-xl mx-auto'>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+      
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

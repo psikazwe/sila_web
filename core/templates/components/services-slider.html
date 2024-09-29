@@ -1,0 +1,49 @@
+<section>
+
+    <div class="p-10 sm:p-20">
+
+        <div class="text-center">
+            <div class="mx-auto text-ecnter">
+                <h2 class="font-normal tracking-tighter text-xl sm:text-2xl mb-5 md:text-4xl md:font-semibold ">We offer solutions best suited to the current market demand.</h2>
+                <p class="text max-w-xl text-center mx-auto">
+                    By harnessing the power of advanced mathematical models and deep industry knowledge to enhance business operations across finance, risk management, data analysis, and beyond
+                </p>
+            </div>
+        </div>
+        
+    </div>
+
+
+</section>
+
+
+
+<section class="px-10 sm:px-20 overflow-hidden relative w-screen pb-10 md:pb-20">
+    
+    <div class="marquee">
+        <div class="track">
+            {% for category in categories %}
+                <div class="inline-block mr-5 flex-shrink-0 min-w-32 md:min-w-52 px-5  text-slate-700 even:text-primary-500">
+                    <a href="{% url 'core:service-detail' category.id %}">
+                        <p class="font-normal sm:text-base md:text-lg rounded-full text-center transition-all px-4 py-2 bg-slate-100 hover:text-lime-100 hover:bg-primary-500">{{ category.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+            {% for category in categories %}
+                <div class="inline-block mr-5 flex-shrink-0 min-w-32 md:min-w-52 px-5  text-slate-700 even:text-primary-500">
+                    <a href="{% url 'core:service-detail' category.id %}">
+                        <p class="font-normal sm:text-base md:text-lg rounded-full text-center transition-all px-4 py-2 bg-slate-100 hover:text-lime-100 hover:bg-primary-500">{{ category.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    <div class="py-10 mx-auto mt-10 text-center">
+        <a href='{% url "core:service" %}' class="button outline big flex-grow-0 ">
+            <span>View All</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+</section>

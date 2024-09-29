@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div>
+  <h2 class="title mb-5">Create a New Service</h2>
+  <form method="post"  enctype="multipart/form-data" class="space-y-2">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="field">
+        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+    {% endfor %}
+    {{ form.media }}
+    <div class="action-buttons mt-5">
+      <button type="submit" class="button primary">Update</button>
+      <a href="{% url 'admin:service-list' %}"> <div  class='button dashed'> Cancel</div> </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

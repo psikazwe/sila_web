@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load static %}
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<div class=" bg-slate-200 relative object-cover  overflow-hidden">
+    <img src="{% static 'assets/affiliates.webp' %}" alt="" class="absolute object-cover top-0 min-w-full min-h-full w-auto h-auto z-0">
+    <div class="bg-gradient-to-tr from-slate-800/90 to-transparent pt-10 relative z-10">
+        <div class="px-10 md:px-20  space-y-7 py-20 ">
+    
+            {% if request.GET.order and request.GET.order == 'a' %} 
+                <h1 class="text-4xl font-normal tracking-tighter text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+                    <span>Affiliated with</span>
+                    <div class="text-primary-400 otuline-1 outline-white">Global Veteran Companies</div>
+                </h1>
+    
+                <p class="text !text-white max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+                    We are actively engaged with Companies across all major global marketing sectors, providing comprehensive consulting and endorsement services to businesses seeking to expand their international presence. . 
+                </p>
+            {% else %}
+                <h1 class="text-4xl font-normal tracking-tighter text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+                    <span>Exceptional Service From</span>
+                    <div class="text-primary-400 otuline-1 outline-white">Our Dedicated Team</div>
+                </h1>
+    
+                <p class="text !text-white max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+                    Our team consists of skilled professionals dedicated to delivering high-quality digital solutions. We combine creative vision with technical expertise to craft impactful digital experiences. Our collaborative approach with global partners ensures we tailor our services to meet each client's unique needs, helping businesses thrive in the global marketplace. 
+                </p>
+            
+            {% endif %}
+    
+    
+            {% comment %} <button class="button secondary big">Inquire</button> {% endcomment %}
+        </div>
+    </div>
+</div>
+
+<section class="grid grid-cols-1 gap-y-40 py-10 pb-20  animate-slidein  opacity-0 [--slidein-delay:600ms]">
+
+    <section class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-20 px-10 md:px-20 w-full pt-10 {% if request.GET.order and request.GET.order == 'a' %} order-1 {% else %} order-3 {% endif %}">
+
+        <div class="sm:col-span-2 md:col-span-3">
+            <div class=" text-center">
+                <h1 class="text-2xl md:text-4xl font-normal tracking-tighter text-slate-700 mb-2.5">Our Affliates</h1>
+                <p class="text">Sila Global Solution team comprises of individuals with various exceptional skills.</p>
+            </div>
+        </div>
+        
+
+        {% for affiliate in affiliates %}
+            <div class="affiliate">
+                <div class="cover">
+                    <img src="{{ affiliate.logo.url }}" alt="{{ affiliate.name }}">
+                </div>
+                <div class="details">
+                    <div class="name">{{ affiliate.name }}</div>
+                    <div class="socials">
+
+                        {% if affiliate.instagramURL %}
+                          <a href="{{ affiliate.instagramURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.facebookURL %}
+                          <a href="{{ affiliate.facebookURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-facebook"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.linkedinURL %}
+                          <a href="{{ affiliate.linkedinURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-linkedin"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.youtubeURL %}
+                          <a href="{{ affiliate.youtubeURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-youtube"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.tiktokURL %}
+                          <a href="{{ affiliate.tiktokURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-tiktok"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.webURL %}
+                          <a href="{{ affiliate.webURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-tiktok"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                    </div>
+                    <hr class="mb-5">
+                    <div class="description"> {{ affiliate.description }}</div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </section>
+    
+    <section class="order-2 px-10 md:px-20 w-full">
+        <div class="mb-20">
+            <div class=" text-center">
+                <h1 class="text-2xl md:text-4xl font-normal tracking-tighter text-slate-700 mb-2.5">Our Core Team Members</h1>
+                <p class="text">Sila Global Solution team comprises of individuals with various exceptional skills.</p>
+            </div>
+
+        </div>
+
+        <div class=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-20">
+            {% for member in members  %}          
+                <div class="team-member">
+    
+                    <div class="cover">
+    
+                    </div>
+    
+                    <div class="space-y-3">
+    
+                        <div class="details">
+                            <h3 class="name">{{ member.name }}</h3>
+                            <p class="position">{{ member.position }}</p>
+                        </div>
+                    </div>
+    
+                </div>
+            {% endfor %}
+        </div>
+        
+    </section>
+
+</section>
+
+<section class="modal">
+    <div class="content">
+        <div class="buttons">
+            <button class="button light close">Close</button>
+        </div>
+        <div class="body">
+        </div>
+    </div>
+</section>
+
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+  
+    <script>
+
+        const team = document.querySelectorAll('.team-member');
+        const affiliates = document.querySelectorAll('.affiliate');
+        const modal = document.querySelector('.modal')
+
+        team.forEach( person => {
+            person.addEventListener('click', e => {
+                let clone = e.target.cloneNode('deep')
+                clone.classList.add('full');
+                let modalBody = modal.querySelector('.body');
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+                modal.classList.add('active')
+            })
+        })
+
+        affiliates.forEach( company => {
+            company.addEventListener('click', e => {
+                let clone = e.target.cloneNode('deep')
+                clone.classList.add('full');
+                let modalBody = modal.querySelector('.body');
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+                modal.classList.add('active')
+            })
+        })
+
+        modal.querySelector('.close')?.addEventListener('click', e => {
+            modal.classList.remove('active')
+        })
+
+
+
+    </script>
+
+
+{% endblock scripts %}

@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="form-container cover">
+    <h2 class="title mb-5">Edit User: {{ user.firstname }}</h2>
+
+    
+
+    <form method="post"  enctype="multipart/form-data" class="form-container space-y-2">
+      {% csrf_token %}
+
+      <div class="h-40 w-40 rounded-lg bg-gray-50 overflow-hidden object-fill">
+      </div>
+
+      
+      <div class="flex-grow space-y-2.5">
+        {% for field in form %}
+          {% if field.name != "cover" %}
+            <div class="field">
+              <label for="{{ field.auto_id }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+  
+      <div class="flex items-center gap-4">
+        <div class="action-buttons mt-5">
+          <button type="submit" class="button primary">Update</button>
+          <a href="{% url 'admin:user-list' %}"> <div  class='button dashed'> Cancel</div> </a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+{% endblock %}

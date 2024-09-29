@@ -1,0 +1,387 @@
+[
+
+    {
+        "model": "core.offer",
+        "pk": 1,
+        "fields": { "name": "Consultation", 
+        "description": "Offer bespoke consulting solutions tailored to your industry's unique challenges", 
+        "is_active": 1 }
+    },
+    
+  {
+    "model": "core.offer",
+    "pk": 2,
+    "fields": { "name": "Manage Services Opertations", 
+    "description": "Outsource critical functions to optimize efficiency and reduce costs.", 
+    "is_active": 1 }
+  },
+  
+  {
+    "model": "core.offer",
+    "pk": 3,
+    "fields": { "name": "Endorsement and Sponsorship", 
+    "description": "Enhance your brand's visibility and credibility through our strategic endorsements and sponsorships, carefully selected to align with your values and objectives.", 
+    "is_active": 1 }
+  },
+
+
+  {
+    "model": "core.category",
+    "pk": 1,
+    "fields": { "name": "Agriculture", 
+    "description": "Sila Global Solutions focuses on using technology to boost agricultural productivity, efficiency, and sustainability. We integrate advanced farming techniques like drones and precision agriculture, alongside traditional methods, aiming to increase crop yields, reduce costs, and create jobs. Committed to sustainable development, We also promote the use of renewable energy in farming to help farmers, lower expenses, and combat climate change.", 
+    "is_active": 1 }
+  },
+    
+  {
+      "model": "core.category",
+      "pk": 2,
+      "fields": {
+          "name": "Energy",
+          "description": "Sila Global Solutions plays a key role in integrating renewable energy into agriculture, contributing to about 30% of global energy consumption. Our efforts aim to boost farmer incomes, cut losses, create jobs, and advance climate actions. In partnership with IRENA and FAO, we have developed an action plan emphasizing data collection, financial access, and innovation to enhance renewable energy use in agriculture, technology, education, and medicine.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 3,
+      "fields": {
+          "name": "Education",
+          "description": "Sila Global Solutions enhances education through innovative digital tools like metaverse learning, AI, and ubiquitous computing, fostering innovation. Post-COVID-19, we have rapidly deployed educational technologies to improve learning experiences and address global educational loss.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk":4,
+      "fields": {
+          "name": "Medical",
+          "description": "Sila Global Solutions helps medical businesses tackle challenges with AI diagnostics, telemedicine, and personalized medicine. These technologies improve healthcare quality, reduce costs, and enhance patient outcomes, making healthcare more efficient and accessible.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 5,
+      "fields": {
+          "name": "Logistics",
+          "description": "Streamlining logistics processes through supply chain optimization cuts expenses, boosts efficiency, and elevates customer satisfaction. Technologies like automation, AI, and IoT enhance operational value and refine workflows.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 6,
+      "fields": {
+          "name": "Science",
+          "description": "Streamlining logistics processes through supply chain optimization cuts expenses, boosts efficiency, and elevates customer satisfaction. Technologies like automation, AI, and IoT enhance operational value and refine workflows.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 7,
+      "fields": {
+          "name": "Technology",
+          "description": "Our Technology Services focus on developing robust, secure, and stable technology solutions for your business. By incorporating common sense solutions into seemingly daunting deliverables, we can ensure at the start of the project that we safely deliver the product to completion.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 8,
+      "fields": {
+          "name": "Engineering",
+          "description": "Sila Global Solutions provides a broad spectrum of engineering services aimed at improving business operations across sectors like manufacturing, supply chain, and logistics. Utilizing cutting-edge solutions, we craft customized strategies to tackle current issues and foster long-term growth. Our services are grounded in adding value in complex settings, empowering clients to manage their operations effectively and strategically.",
+          "is_active": 1
+      }
+  },
+  {
+      "model": "core.category",
+      "pk": 9,
+      "fields": {
+          "name": "Entertainment",
+          "description": "A comprehensive category under which Sila Global Solutions offers a variety of entertainment-related services, including art, music, and movies, to cater to the creative and leisure needs of individuals and organizations.",
+          "is_active": 1
+      }
+  },
+
+  {
+    "model": "core.service",
+      "pk": 1,
+      "fields": {
+          "name": "Purchasing and Supply",
+          "description": "Sila Global Solutions optimizes purchasing and supply chains through advanced analytics and predictive modeling, ensuring efficient procurement, inventory management, and distribution. Our solutions leverage technology to reduce costs, minimize waste, and enhance supplier relationships, supporting sustainable and efficient operations.",
+          "is_active": 1,
+          "category": 1
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 2,
+      "fields": {
+          "name": "Research and Consultation",
+          "description": "Providing expert advice and analysis to guide agricultural practices towards increased productivity and sustainability. Our research and consultation services leverage cutting-edge technology and innovative farming techniques to optimize resource use and enhance crop yields.",
+          "is_active": 1,
+          "category": 1
+      }
+  },
+  
+  {
+      "model": "core.service",
+      "pk": 3,
+      "fields": {
+          "name": "Innovation",
+          "description": "Driving advancements in renewable energy integration and sustainable practices across agriculture, technology, education, and medicine. Our innovation services focus on developing novel solutions to complex challenges, fostering growth and efficiency.",
+          "is_active": 1,
+          "category": 2
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 4,
+      "fields": {
+          "name": "Data Collection",
+          "description": "Collecting and analyzing data to inform strategic decisions and innovations in renewable energy, agriculture, and educational technologies. Our data collection processes ensure actionable insights for improved outcomes.",
+          "is_active": 1,
+          "category": 2
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 5,
+      "fields": {
+          "name": "Financial Access",
+          "description": "Facilitating access to funding and financial resources for renewable energy projects, technological innovations, and educational initiatives. Our financial access services support sustainable development goals.",
+          "is_active": 1,
+          "category": 2
+      }
+  },
+
+
+  
+  {
+      "model": "core.service",
+      "pk": 6,
+      "fields": {
+          "name": "Metaverse Learning Platforms",
+          "description": "Developing immersive learning environments that enhance educational experiences and accessibility. Our metaverse platforms integrate AI and ubiquitous computing for engaging, effective learning.",
+          "is_active": 1,
+          "category": 3
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 7,
+      "fields": {
+          "name": "AI Powered Educational Tools",
+          "description": "Creating intelligent tools that personalize and enrich learning experiences. Our AI-powered educational tools adapt to individual needs, improving engagement and outcomes.",
+          "is_active": 1,
+          "category": 3
+      }
+  },
+
+
+  
+  {
+      "model": "core.service",
+      "pk": 8,
+      "fields": {
+          "name": "AI Powered Diagnostics",
+          "description": "Utilizing artificial intelligence to improve diagnostic accuracy and efficiency in healthcare settings. Our AI diagnostics support personalized medicine and telemedicine services.",
+          "is_active": 1,
+          "category": 4
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 9,
+      "fields": {
+          "name": "Telemedicine Services",
+          "description": "Offering remote healthcare solutions that increase accessibility and quality of care. Our telemedicine services connect patients with medical professionals, enhancing patient outcomes and satisfaction.",
+          "is_active": 1,
+          "category": 4
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 10,
+      "fields": {
+          "name": "Personalized Medicine Programs",
+          "description": "Tailoring medical treatments to individual needs for better health outcomes. Our personalized medicine programs leverage advanced analytics for precise and effective care.",
+          "is_active": 1,
+          "category": 4
+      }
+  },
+
+
+  
+  {
+      "model": "core.service",
+      "pk": 11,
+      "fields": {
+          "name": "Supply Chain Optimization",
+          "description": "Enhancing logistics through advanced analytics and automation, reducing costs and boosting efficiency. Our supply chain optimization services streamline operations for better customer satisfaction.",
+          "is_active": 1,
+          "category": 5
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 12,
+      "fields": {
+          "name": "Automation in Logistics",
+          "description": "Integrating automated systems for improved operational efficiency. Our automation services reduce manual errors and accelerate processes.",
+          "is_active": 1,
+          "category": 5
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 13,
+      "fields": {
+          "name": "AI and IoT Integration",
+          "description": "Connecting devices and systems for smarter logistics management. Our AI and IoT integration services enable real-time monitoring and decision-making.",
+          "is_active": 1,
+          "category": 5
+      }
+  },
+
+
+  
+  {
+      "model": "core.service",
+      "pk": 14,
+      "fields": {
+          "name": "Product Development",
+          "description": "Utilizing cutting-edge scientific methodologies, we develop groundbreaking products that redefine the market. Our innovative approach ensures that we are at the forefront of technological advancements, enabling us to create products that are not only novel but also address pressing business challenges.",
+          "is_active": 1,
+          "category": 6
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 15,
+      "fields": {
+          "name": "Market Research and Analysis",
+          "description": "We conduct in-depth market research to understand the needs and preferences of our target audience. This allows us to tailor our product offerings to meet market demands, ensuring that our solutions are not only innovative but also highly relevant to the needs of our customers.",
+          "is_active": 1,
+          "category": 6
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 16,
+      "fields": {
+          "name": "Operational Efficiency Enhancement",
+          "description": "Our services aim to streamline business processes, reduce operational costs, and improve overall efficiency. By leveraging technology and innovation, we help businesses optimize their operations, enabling them to achieve greater productivity and profitability.",
+          "is_active": 1,
+          "category": 6
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 17,
+      "fields": {
+          "name": "Business Tech Solutions",
+          "description": "We provide tailored technological solutions to address specific business challenges. Our expertise in scientific methodologies and our innovative approach allow us to develop effective strategies and technologies that help businesses overcome obstacles and achieve their goals.",
+          "is_active": 1,
+          "category": 6
+      }
+  },
+
+
+  
+  {
+      "model": "core.service",
+      "pk": 18,
+      "fields": {
+          "name": "Application and Web Development",
+          "description": "Sila offers comprehensive application and web design & development services, crafting bespoke software applications and websites that align perfectly with business requirements. Our team excels in creating intuitive user interfaces, building robust backend systems, and ensuring the security, scalability, and usability of every solution we deliver.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 19,
+      "fields": {
+          "name": "COTS Integration",
+          "description": "Sila specializes in seamlessly integrating pre-existing commercial software solutions into a business's IT infrastructure. Our expertise covers a wide range of applications including ERP systems, CRM software, and other essential business tools. Through COTS integration, we help streamline operations, enhance efficiency, and elevate customer service experiences.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 20,
+      "fields": {
+          "name": "Data Cleansing and Conversion",
+          "description": "Sila provides specialized services in data cleansing and conversion, ensuring the accuracy and integrity of your data. Our process involves identifying and rectifying inaccuracies, eliminating duplicates, and formatting data correctly within databases. Additionally, we offer data transformation services to adapt data formats and structures for enhanced compatibility, analysis, and storage capabilities.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 21,
+      "fields": {
+          "name": "Database Administration",
+          "description": "Sila offers comprehensive database services, covering everything from initial design to ongoing maintenance. Our experts specialize in creating efficient database structures, developing databases using SQL and other DBMS, and continuously optimizing and securing them to meet evolving business requirements. Our approach ensures that your database remains a reliable and powerful tool for managing and analyzing data.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  
+  {
+    "model": "core.service",
+    "pk": 22,
+    "fields": {
+        "name": "Movies",
+        "description": "Sila Global Solutions offers movie production services, from script development to post-production, ensuring that films are crafted with creativity, technical excellence, and a compelling narrative to captivate viewers.",
+        "is_active": 1,
+        "category": 9
+    }
+  },
+  {
+      "model": "core.service",
+      "pk": 23,
+      "fields": {
+          "name": "IT Infrastructure Architecture Solutions",
+          "description": "Sila provides comprehensive IT infrastructure architecture solutions, encompassing the design and planning of a business's entire IT setup. Our services include the selection of appropriate hardware and software components, the design of network architectures, and the implementation of robust security measures to safeguard data and systems. Our goal is to create a resilient and efficient IT environment that supports business growth and operational excellence.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 24,
+      "fields": {
+          "name": "Software Verification and Validation",
+          "description": "Sila offers specialized services in software verification and validation, ensuring that each system is designed correctly and fully meets the specified requirements before deployment. Our process includes rigorous checks to confirm adherence to design specifications and to validate that the system is free from errors, thereby guaranteeing readiness for real-world use and optimal performance.",
+          "is_active": 1,
+          "category": 7
+      }
+  },
+  
+  {
+      "model": "core.service",
+      "pk": 25,
+      "fields": {
+          "name": "Art",
+          "description": "Sila Global Solutions provides art services that span across various mediums, offering creative consultation, artwork production, and exhibition management to bring art to life and enhance spaces with unique aesthetics.",
+          "is_active": 1,
+          "category": 9
+      }
+  },
+  {
+      "model": "core.service",
+      "pk": 26,
+      "fields": {
+          "name": "Music",
+          "description": "Our music services include music production, artist management, and event organization, aiming to produce high-quality audio content and memorable musical experiences that resonate with audiences.",
+          "is_active": 1,
+          "category": 9
+      }
+  }
+]

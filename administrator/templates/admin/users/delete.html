@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+  <div class="form-container">
+      <h2 class="title">Delete Service</h2>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Are you sure you want to delete "{{ user.email }}"?</p>
+      <form method="post" class="action-buttons mt-5">
+        {% csrf_token %}
+        <button type="submit" class='button danger'>Yes, Delete</button>
+        <a href="{% url 'admin:user-detail' user.id %}"> <div  class='button dashed'> Cancel</div> </a>
+      </form>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+{% block full_screen %}
+{% include "navbar.html" %}
+
+
+<!-- Hero -->
+<div class="relative aspect-[3/1] grid place-items-center overflow-hidden bg-red-200" id="slider">
+    {% for item in covers %}
+        {% if item.cover %}
+        <div class=" object-cover bg-slate-400 absolute w-full opacity-0 transition-all slide blur-lg z-0">
+            <img src="{{ item.cover.url }}" alt="" class="min-h-full min-w-full">
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    <div class="h-full w-full relative z-10 bg-gradient-to-r from-slate-800 to-transparent grid place-items-center">
+
+        <div class=" grid grid-cols-2 gap-20 w-full content-wrapper">
+
+
+            <div class="space-y-5">
+    
+                <h1 class="text-2xl font-bold tracking-tighter text-primary-500">Sila Global Solutions</h1>
+        
+                <p class="text-sm text-white">
+                    Elevate Your Business with Us - Your Trusted Partner in Success, Offering Tailored Solutions Across Industries to Empower Your Growth and Drive Results with Confidence!
+                </p>
+        
+                <button class="button primary">Get In Touch</button>
+            </div>
+
+            <div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Introduction  -->
+<div class='content-wrapper grid sm:grid-cols-4 md:grid-cols-5 gap-5 sm:gap-20 py-20'>
+    <h1 class='font-bold  tracking-tight text-2xl sm:col-span-2 uppercase text-slate-600'>Transforming  <br />
+        <span class='underline-offset-8'>Complexity</span> <br /> 
+        Into <span>Clarity</span>
+    </h1>
+    <p class='text sm:col-span-2 md:col-span-3 '>At Sila Global Solutions, we harness the power of advanced mathematical models and deep industry knowledge to enhance business operations across finance, risk management, data analysis, and beyond. Our expertise spans consulting, managed services, and the entertainment sector, ensuring businesses can navigate today's complex landscapes with confidence.</p>
+</div>
+
+
+
+<!-- Core Services  -->
+<section class='grid place-items-center'>
+    <div class="content-wrapper grid grid-cols-3 gap-10 2xl:gap-x-20 services py-20">
+      <div class="col-span-3 caption text-center mb-10 text-4xl font-bold tracking-tighter">Our Core Business</div>
+
+      <div class='core-card'>
+        <div class="icon">
+          <img src='{% static "assets/business.svg" %}' alt="" />
+        </div>
+        <div class="title">Consultation</div>
+        <div class="description">Offer bespoke consulting solutions tailored to your industry's unique challenges</div>
+      </div>
+
+      <div class='core-card'>
+        <div class="icon">
+            <img src='{% static "assets/endorse.svg" %}' alt="" />
+        </div>
+        <div class="title">Endorsement and Sponsorship</div>
+        <div class="description">Enhance your brand's visibility and credibility through our strategic endorsements and sponsorships, carefully selected to align with your values and objectives.</div>
+      </div>
+
+
+      <div class='core-card'>
+        <div class="icon">
+            <img src='{% static "assets/service.svg" %}' alt="" />
+        </div>
+        <div class="title">Manage Services Opertations</div>
+        <div class="description">Outsource critical functions to optimize efficiency and reduce costs.</div>
+      </div>
+
+    </div>
+</section>
+
+
+
+<section class="my-20">
+    <div class="content-wrapper flex items-end gap-10">
+        <div class="flex-grow">
+            <h2 class="title">Our Expertises, Your Advantage</h2>
+            <div class="mb-3 text-sm text-slate-500">Our business expertises range across different industries and with variety of services</div>
+        </div>
+
+        
+        <div class='stats'>
+              
+            <dl>
+              <dd class='value'>00</dd>
+              <dt class='text !text-slate-400'>Industries</dt>
+            </dl>
+
+            <dl>
+              <dd class='value'>00</dd>
+              <dt class='text !text-slate-400'>Industries</dt>
+            </dl>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section class='grid place-items-center my-20 py-20'>
+    <div class='content-wrapper'>
+        <h1 class='caption text-center  mb-10 text-4xl font-bold tracking-tighter'>Why Choose Us?</h1>
+
+        <div class='benefits'>
+            <div class='benefit-card'>
+                <h2 class='title'>Customization Options</h2>
+                <p class='text'>Tailor our services to match your specific requirements, enhancing customer satisfaction and strengthening your brand identity.</p>
+            </div>
+
+            <div class='benefit-card'>
+                <h2 class='title'>Global Market Exposure</h2>
+                <p class='text'>Gain access to new markets and opportunities through our international partnerships and networks.</p>
+            </div>
+
+            <div class='benefit-card'>
+                <h2 class='title'>International Recognition</h2>
+                <p class='text'>Benefit from our reputation as a trusted advisor in complex business environments worldwide.</p>
+            </div>
+
+            <div class='benefit-card'>
+                <h2 class='title'>Cross-Cultural Expertise</h2>
+                <p class='text'>Leverage our multicultural team's insights to navigate global business challenges with ease.</p>
+            </div>
+
+            <div class='benefit-card col-span-2'>
+                <h2 class='title'>Regulatory Compliance Support</h2>
+                <p class='text'>Ensure compliance with international regulations, simplifying your expansion efforts.</p>
+            </div>
+
+        </div>
+    
+    </div>
+</section>
+
+
+
+{% endblock full_screen %}
+
+
+{% block scripts %}
+  
+    <script>
+
+        const images = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, key) => {
+                img.style.opacity = (index === key) ? 1 : 0;
+            });
+        }
+
+        function transitionImage() {
+            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(transitionImage, 5000); // Change image every 5 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            transitionImage();
+        });
+
+
+    </script>
+
+
+{% endblock scripts %}

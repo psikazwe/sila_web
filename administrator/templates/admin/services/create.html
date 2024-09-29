@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="form-container cover">
+  <h2 class="title mb-5">Create a New Service</h2>
+  <form method="post"  enctype="multipart/form-data" class="space-y-2">
+    {% csrf_token %}
+    <div class="grid lg:grid-cols-4 xl:grid-cols-5 gap-10 my-5">
+  
+      <div class="aspect-[4/2]  rounded-lg bg-gray-50 hover:bg-gray-100 transition-all overflow-hidden lg:col-span-2 xl:col-span-2 object-fill">
+        <div class="file-field">
+          <label for="{{ form.cover.auto_id }}">
+            <div class="aspect-[4/2]  rounded-lg bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill grid place-items-center cursor-pointer hover:border-blue-400 hover:outline-none hover:ring focus:ring-blue-300 focus:ring-opacity-40 border ring-2">
+                {% comment %} <img src=""/> {% endcomment %}
+                <div class="text-center">
+                  <i class="fa-regular fa-file-image text-4xl text-gray-300"></i>
+                  <p class="text-sm text-gray-400">Select Cover</p>
+                </div>
+            </div>
+          </label>
+          {{ form.cover.as_widget }}
+        </div>
+      </div>
+    
+      <div class="lg:col-span-2  xl:col-span-3 flex flex-col">
+        <div class="flex-grow space-y-2.5">
+          {% for field in form %}
+            {% if field.name != "cover" %}
+              <div class="field">
+                <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                {{ field }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+    
+        <div class="flex items-center gap-4">
+          <div class="action-buttons mt-5">
+            <button type="submit" class="button primary">Create</button>
+            <a href="{% url 'admin:service-list' %}"> <div  class='button dashed'> Cancel</div> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

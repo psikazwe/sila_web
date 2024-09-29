@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<div class="relative bg-black">
+
+    
+    <!-- slider -->
+    <div class="absolute object-cover top-0 bottom-0 left-0 right-0 z-0">
+        <div class="carousel-container" id="service-banner">
+            <div class="wrapper">
+                {% for item in covers %}
+                    {% if item.cover %}
+                    <div class="slide"
+                        style=" 
+                            background-image: url({{ item.cover.url }});
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: right;
+                        "
+                    >
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- content  -->
+    <div class="bg-gradient-to-tr from-black to-transparent pt-10 relative z-10">
+    
+        <div class="px-10 md:px-20 space-y-7 py-10 md:py-20 relative z-10 ">
+            <h1 class="text-4xl font-normal tracking-tighter !text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+                <span>Focused Industries</span>
+                <div class="text-lime-400">& Services</div>
+            </h1>
+    
+            <p class="text !text-white max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+                Discover a comprehensive range of specialized services tailored to meet the unique needs of diverse industries. Our expert professionals deliver cutting-edge solutions designed to enhance operational efficiency, drive innovation, and propel your business forward.
+            </p>
+    
+            <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+        </div>
+    </div>
+</div>
+
+
+
+<div class="px-10 md:px-20 my-20 py-5  animate-slidein  opacity-0 [--slidein-delay:900ms]">
+    
+    <h1 class="text-2xl md:text-4xl text-center font-normal tracking-tighter">All Our Core Business models are offered to all </h1>
+    <div class="grid grid-cols-3 gap-10 mt-10">
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
+            <i class="fa-regular fa-comments text-base md:text-2xl text-primary-500 mr-2"></i>
+            <span class="text-lg font-normal mb-2.5">Consultation</span>
+        </div>
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
+            <i class="fa-solid fa-hand-holding-dollar  text-base md:text-2xl text-primary-500 mr-2"></i>
+            <span class="text-lg font-normal mb-2.5">Endorsement and Sponsorship</span>
+        </div>
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
+            <i class="fa-solid fa-gears text-base md:text-2xl text-primary-500 mr-2"></i>
+            <span class="text-lg font-normal mb-2.5">Manage Services Opertations</span>
+        </div>
+    </div>
+</div>  
+
+
+
+<div class="animate-slidein  opacity-0 [--slidein-delay:1200ms] grid md:grid-cols-2  my-20 bg-slate-700">
+    {% for category in category_list %}
+
+        <a href="{% url 'core:service-detail' category.id %}" >
+            <div class="relative w-full aspect-[2/1] md:aspect-[3/1] object-contain overflow-hidden  transition-all group" >
+
+                {% if category.cover %}
+                  
+                    <div class="absolute top-0 left-0 right-0 bottom-0 z-0"
+                        style=" 
+                            background-image: url({{ category.cover.url }});
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: right;
+                        "
+                    >
+
+                    </div>
+                {% endif %}
+
+                <div class="relative h-full p-10 md:px-20 grid top-0 left-0 right-0 bottom-0 items-center text-white bg-gradient-to-tr from-black to-transparent">
+                    <div class="space-y-2.5">
+                        <h2 class="font-normal tracking-tighter text-2xl  mt-2.5">{{ category.name }}</h2>
+                        <button type="button" class="button primary">
+                            <span>View Details</span>
+                            <i class="fa-solid fa-chevron-right "></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        
+    {% endfor %}
+</div>
+
+
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+  
+    <!-- <script>
+
+        const sections = document.querySelectorAll('.industry');
+        let currentSectionIndex = 0;
+        let wasPrevious = false;
+
+        function handleWheel(event) {
+            event.preventDefault();
+
+            if (isAtBottom(sections[currentSectionIndex])) {
+                           
+                if (event.deltaY < 0) {
+                    // Scroll up
+                    if (currentSectionIndex > 0) {
+                        currentSectionIndex--;
+                    }
+                } else {
+                    // Scroll down
+                    if (currentSectionIndex < sections.length - 1) {
+                        currentSectionIndex++;
+                    }
+                }
+
+                const targetSection = sections[currentSectionIndex];
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+    
+            }else{
+                const postion = getElementPostion(sections[currentSectionIndex]);
+                let goTo = postion;
+                if ( wasPrevious ) {
+                    const targetSection = sections[currentSectionIndex];
+                    goTo = targetSection
+                }
+                window.scrollTo({
+                    top: goTo,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        function isAtBottom(element) {
+
+            const rect = element.getBoundingClientRect();
+            const elementFromTop = element.offsetTop;
+
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+            if(viewportHeight+2 < rect.height ){
+                wasPrevious = true;
+                return true;
+            }
+            wasPrevious = false;
+            return false;
+        }
+
+        function getElementPostion(element){
+            const rect = element.getBoundingClientRect();
+            const elementFromTop = element.offsetTop;
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            return scrollPosition + (rect.height % viewportHeight)
+        }
+
+
+        document.addEventListener('wheel', handleWheel);
+
+
+    </script> -->
+
+    <script>
+        const images = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, key) => {
+                img.style.opacity = (index === key) ? 1 : 0;
+            });
+        }
+
+        function transitionImage() {
+            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(transitionImage, 5000); // Change image every 5 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            transitionImage();
+        });
+
+
+        function toggleAccordion(index) {
+            console.log(index)
+            const content = document.getElementById(`content-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            
+            console.log(content)
+
+            // SVG for Minus icon
+            const minusSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+            </svg>
+            `;
+        
+            // SVG for Plus icon
+            const plusSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+            </svg>
+            `;
+        
+            // Toggle the content's max-height for smooth opening and closing
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0';
+                icon.innerHTML = plusSVG;
+            } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+                icon.innerHTML = minusSVG;
+            }
+        }
+
+        const categorys = document.querySelectorAll('.category');
+        categorys.forEach( cat => {
+            const id = cat.id;
+            const button = cat.querySelector('.icon');
+            button?.addEventListener('click', () => {
+                toggleAccordion(id);
+            })
+        })
+
+    </script>
+
+{% endblock scripts %}

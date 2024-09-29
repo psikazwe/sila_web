@@ -1,0 +1,13 @@
+Pillow
+django
+django-tables2 
+django-htmx 
+django-filter
+django_components
+django-ckeditor==6.7.1
+djangorestframework
+djangorestframework-simplejwt
+whitenoise==6.6.0
+jsonfield==3.1.0
+django-cors-headers
+# ./manage.py loaddata initial

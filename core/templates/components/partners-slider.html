@@ -1,0 +1,122 @@
+{% load static %}
+
+<section class="px-10 sm:px-20 text-center overflow-hidden relative w-screen pb-10 md:pb-20">
+
+    {% for affiliate in affiliates %}
+        <div class="inline-block mr-5 flex-shrink-0 min-w-32 md:min-w-52 h-44 px-5 bg-transparent relative group rounded-xl transition-all  overflow-hidden">
+            <div class="affiliate">
+                <div class="cover">
+                    <img src="{{ affiliate.logo.url }}" alt="{{ affiliate.name }}">
+                </div>
+                <div class="details">
+                    <div class="name">{{ affiliate.name }}</div>
+                    <div class="socials">
+
+                        {% if affiliate.instagramURL %}
+                          <a href="{{ affiliate.instagramURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.facebookURL %}
+                          <a href="{{ affiliate.facebookURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-facebook"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.linkedinURL %}
+                          <a href="{{ affiliate.linkedinURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-linkedin"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.youtubeURL %}
+                          <a href="{{ affiliate.youtubeURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-youtube"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.tiktokURL %}
+                          <a href="{{ affiliate.tiktokURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-tiktok"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                        {% if affiliate.webURL %}
+                          <a href="{{ affiliate.webURL }}" target="_blank" rel="noopener noreferrer">
+                            <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                            <i class="fa-brands fa-tiktok"></i>
+                            </button>
+                          </a>
+                        {% endif %}
+
+                    </div>
+                    <hr class="mb-5">
+                    <div class="description"> {{ affiliate.description }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</section>
+
+<section class="modal">
+    <div class="content">
+        <div class="buttons">
+            <button class="button light close">Close</button>
+        </div>
+        <div class="body">
+        </div>
+    </div>
+</section>
+
+{% block scripts %}
+  
+    <script>
+
+        const team = document.querySelectorAll('.team-member');
+        const affiliates = document.querySelectorAll('.affiliate');
+        const modal = document.querySelector('.modal')
+
+        team.forEach( person => {
+            person.addEventListener('click', e => {
+                let clone = e.target.cloneNode('deep')
+                clone.classList.add('full');
+                let modalBody = modal.querySelector('.body');
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+                modal.classList.add('active')
+            })
+        })
+
+        affiliates.forEach( company => {
+            company.addEventListener('click', e => {
+                let clone = e.target.cloneNode('deep')
+                clone.classList.add('full');
+                let modalBody = modal.querySelector('.body');
+                modalBody.innerHTML = '';
+                modalBody.appendChild(clone);
+                modal.classList.add('active')
+            })
+        })
+
+        modal.querySelector('.close')?.addEventListener('click', e => {
+            modal.classList.remove('active')
+        })
+
+
+
+    </script>
+
+
+{% endblock scripts %}

@@ -1,0 +1,38 @@
+{% extends "admin/base.html" %}
+
+{% load django_tables2 %}
+
+{% block content %}
+
+  <div class="table-container">
+    <div class="title">Users</div>
+
+      <div class="flex justify-between gap-10 my-5">
+          {% if filter %}
+              <form action="" method="get" class=" ui container">
+                <div class="search-row">
+                  {% for field in filter.form %}
+                      {% comment %} {{ field.label_tag }} {% endcomment %}
+                      <label>Search:</label>
+                      {{ field }}
+                  {% endfor %}
+                  <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </form>
+          {% endif %}
+              
+          <a href="{% url 'admin:user-create' %}">
+            <div class="button primary">
+              <i class="fa-regular fa-square-plus"></i>
+              <span>New</span>
+            </div>
+          </a>
+      </div>
+  </div>
+
+  <div class="action-buttons"></div>
+    {% render_table table %}
+
+{% endblock %}

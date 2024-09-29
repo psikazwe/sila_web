@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "watch": "tailwindcss -i ../static/css/input.css -o ../static/css/output.css  --watch",
+    "watch-admin": "tailwindcss -i ../static/admin/css/input.css -o ../static/admin/css/admin-output.css  --watch",
+    "build": "tailwindcss -i ./../static/css/input.css -o ../static/css/output.css --minify",
+    "build-admin": "tailwindcss -i ./../static/admin/css/input.css -o ../static/admin/css/admin-output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  },
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2"
+  }
+}

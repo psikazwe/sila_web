@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<section class="relative overflow-hidden bg-slate-600">
+    <div  class="absolute top-0 bottom-0 left-0 right-0 z-0 hero">
+    </div>
+
+    <div class="h-screen max-h-[600px] bg-gradient-to-r from-slate-800/80 to-transparent text-white flex flex-col justify-end relative z-10 py-20 ">
+    
+        <div class="p-10 sm:p-20 md:max-w-[50%]">
+    
+            <div class="mb-4">
+                <div class="text-lime-300 text-2xl sm:text-4xl font-normal tracking-tighter">Grow your business with us!</div>
+            </div>
+            <div>
+                We Offering Tailored Solutions Across Industries to Empower Your Business Growth and Drive Results with Confidence! 
+            </div>
+
+            <!-- <div class=" animate-slidein  opacity-0 [--slidein-delay:600ms]"> -->
+            <div>
+                <p class="text-lime-400 my-5">Try out a 30 minutes consultation</p>
+                <form class="bg-white/20 pl-4 pr-2 py-2 rounded-full flex items-center max-w-max">
+                    <i class="fa-regular fa-envelope mx-2 text-lg"></i>
+                    <input required type="email" placeholder="Your email address...." class="focus:outline-none bg-transparent px-4 placeholder:text-lime-50 placeholder:text-opacity-50">
+                    <button class="flex-shrink-0 text-nowrap py-2 px-3 rounded-full text-lime-400 bg-slate-800">Book Me!</button>
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+    
+</section>
+
+<section class="p-10 md:p-20">
+    
+    <div class=" max-w-screen-lg mx-auto pt-10" >
+        <p class="text text-center">
+            SILA USA & SILA SOLUTIONS, in collaboration with AEEML (Agriculture, Education, Energy, Medical & Logistics), leads a comprehensive industrial platform in Africa. We cultivate organic and non-organic crops, operate sawmills, and run industrial hemp and food processing plants. By connecting U.S. businesses with African resources, we enhance global food production, reduce logistical challenges, create jobs, and support sustainability. AI-driven aquaculture, water desalination, and workforce development reinforce our commitment to innovation and eco-friendly solutions.
+        </p>
+    </div>
+</section>
+
+
+
+{% include "components/core-services.html" %}
+
+<!-- <section class="mb-20 pb-10">
+    <div class="content-wrapper">
+        <div class="flex items-center justify-center">
+
+            <div class="text-right pr-10">
+                <h1 class="text-4xl font-bold">{{ services.count }}</h1>
+                <p class="uppercase font-light">Services</p>
+            </div>
+
+            <div class="text-left border-l border-slate-400 pl-10 py-5">
+                <h1 class="text-4xl font-bold">{{ categories.count }}</h1>
+                <p class="uppercase font-light">Industries</p>
+            </div>
+
+
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'core:service' %}" class="button secondary">See List of services</a>
+        </div>
+    </div>
+</section> -->
+
+
+{% include "components/services-slider.html" %}
+
+
+{% include "components/benefits.html" %}
+
+<section class="py-10 relative bg-slate-200 hidden">
+    <div class="content-wrapper my-20">
+        <div class="my-20 space-y-5">
+            <h1 class="text-primary-600 font-semibold tracking-tighter text-4xl">Market Coverage</h1>
+            <div class="text max-w-md">We are actively engaged across all major global marketing sectors, providing comprehensive consulting and endorsement services to businesses seeking to expand their international presence. </div>
+        </div>
+    </div>                
+    <!-- grids  -->
+    <div
+        class="absolute inset-0 h-full w-full bg-transparent bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:80px_80px] pointer-events-none z-0"
+    ></div>
+
+</section>
+
+{% include "components/team.html" %}
+
+
+{% include "components/partners-slider.html" %}
+
+<section class="overflow-hidden relative">
+    <div class="p-10 md:p-20 bg-primary-500/70 min-h-60 aspect-[3/1] grid  place-items-center relative z-10">
+        <div class="grid place-items-center gap-5 sm:gap-10 w-full">
+            <h1 class="text-4xl font-semibold tracking-tighter text-white sm:text-left">
+                <span>Ready To Start </span>
+                <span class="text-lime-400">Your Growth ?</span>
+            </h1>
+    
+            <div class="flex sm:justify-end justify-start">
+                <div>
+                    <a href="tel:+260968666009" class="button secondary big">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <video 
+        src="{% static 'assets/background/woman_md.mp4' %}" 
+        class="absolute top-0 min-h-full w-auto sm:h-auto sm:min-w-full z-0 "
+        autoplay
+        loop
+    ></video>
+
+</section>
+
+
+<footer class="bg-slate-800  text  !text-slate-400 p-10 md:p-20">
+
+    <div class=" flex items-center justify-between">
+
+        <div>
+            &copy; {% now "Y" %}. Sila Global Solutions
+        </div>
+
+        <div class="flex items-center gap-5 text-xl">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+    </div>
+
+</footer>
+
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+  
+    <script>
+
+        const images = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, key) => {
+                img.style.opacity = (index === key) ? 1 : 0;
+            });
+        }
+
+        function transitionImage() {
+            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(transitionImage, 5000); // Change image every 5 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            transitionImage();
+        });
+
+
+
+    </script>
+
+
+{% endblock scripts %}

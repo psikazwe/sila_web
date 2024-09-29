@@ -1,0 +1,29 @@
+{% load static %}
+<div class="py-3 bg-primary-500 text-white">
+    <div class="max-w-screen-lg mx-auto container flex items-center gap-10">
+
+        <div class="font-bold tracking-tighter text-xl">SGS</div>
+
+        <nav class="flex-grow space-x-1">
+            <a href="{% url 'client:index' %}" class="button ghost">Account</a>
+            <a href="{% url 'client:business' %}" class="button ghost">Businesses</a>
+        </nav>
+
+        <div class="flex gap-2 justify-end flex-grow">
+            <button class="button ghost !text-lg">
+                <i class="fa-regular fa-bell"></i>
+                <!-- <i class="fa-solid fa-bell"></i> -->
+            </button>
+    
+            <a href="{% url 'core:landing' %}" class="button ghost !text-lg">
+                <i class="fa-solid fa-globe"></i>
+            </a>
+        </div>
+
+        <a href="{% url 'core:logout' %}" class="button primary bright">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            Logout
+        </a>
+        
+    </div>
+</div>

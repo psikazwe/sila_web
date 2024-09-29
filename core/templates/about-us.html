@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<div class="relative">
+
+
+    <!-- content  -->
+    <div class="bg-gradient-to-tr  pt-10 relative z-10 px-10 md:px-20">
+        <img src="{% static 'assets/logo.png' %}" alt="SGS" class="w-40 md mx-auto">
+        <h1 class="text-2xl md:text-4xl text-center font-normal tracking-tighter">Sila Global Solution</h1>
+    
+    </div>
+</div>
+
+
+
+<div class="px-10 md:px-20 pt-10  animate-slidein  opacity-0 [--slidein-delay:1200ms] max-w-screen-lg text-center mx-auto">
+    <p class="text">
+        Sila Global Solutions LLC, established as a Michigan Limited Liability Company, is recognized as a Veteran-Owned Business. We specialize in delivering tailored, client- centric solutions, ensuring an exceptional experience across a wide range of industry sectors 
+    </p>
+    
+</div>  
+
+<div class="grid md:grid-cols-3 gap-20 px-10 md:px-20 py-20  animate-slidein  opacity-0 [--slidein-delay:1200ms]">
+
+    <div class="text-center md:text-left">
+        <div>Year Incorporated</div>
+        <h1 class="text-xl font-normal text-primary-500 tracking-normal">2014</h1> 
+    </div>
+
+    <div class="text-center md:text-left">
+        <div>State of Incorporation</div>
+        <h1 class="text-xl font-normal text-primary-500 tracking-normal">Michigan</h1>
+    </div class="text-center md:text-left">
+
+    <div class="text-center md:text-left">
+        <div>Corporation Type</div>
+        <h1 class="text-xl font-normal text-primary-500 tracking-normal">Limited Liability Company</h1>
+    </div>
+
+</div>
+
+
+
+<div class="px-10 md:px-20 pt-10  animate-slidein  opacity-0 [--slidein-delay:1200ms] max-w-screen-lg text-center mx-auto">
+    
+    <p class="text">
+        We provide business strategy and market research to a wide range of
+companies. We offer customized services across several disciplines. The Consortium
+brings experience experience in business, business development, technology, &
+emerging marketing areas. Furthermore, we draw on a wide variety of specialists from
+the local regions supporting those fields. Over the years, we have created alliances with
+governments, universities, & various other groups to facilitate technology transfers.
+    </p>
+</div>  
+
+{% include "components/core-services.html" %}
+{% include "components/contacts.html" %}
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+
+
+{% endblock scripts %}

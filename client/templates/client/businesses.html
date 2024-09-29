@@ -1,0 +1,50 @@
+{% extends "client/base.html" %}
+
+{% block full_screen %}
+    {% include "client/navbar.html" %}
+    <div class="mb-10">
+
+        <div class="tabs">
+            <div class="wrapper">
+                <form  method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="state" id="state" value="accepted">
+                    <button type="submit" onclick="this.form.submit(); return false;"  class="tab {% if state == 'accepted' %} active {% endif %}">
+                        <i class="fa-regular fa-square-check"></i>
+                        <span>Accepted</span>
+                    </button>
+                </form>
+
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="state" id="state" value="applied">
+                    <button type="submit" onclick="this.form.submit(); return false;" class="tab {% if state == 'applied' %} active {% endif %}" >
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Applied</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock  %}
+
+
+{% block content %}
+
+    businesses
+
+{% endblock %}
+
+
+
+{% block scripts %}
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href)
+        }
+    </script>
+
+{% endblock scripts %}
