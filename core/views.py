@@ -6,16 +6,20 @@ from django.contrib import messages
 from . import models
 from . import forms
 from django.views.generic import TemplateView, ListView, DetailView
-
+from .lib.email_services import send_email
 # Create your views here.
 def index(request):
     services =  models.Service.objects.all()
     categories =  models.Category.objects.all()
     affiliates =  models.Affiliate.objects.filter(is_active = True)
+    book_email = request.session.get('book_email')
+    if(request.session.get('book_email')):
+        del request.session['book_email']
     context = {
         "services": services,
         "categories": categories,
-        "affiliates": affiliates
+        "affiliates": affiliates,
+        "book_email": book_email
     }
     return render(request, "index.html", context)
 
@@ -147,3 +151,21 @@ class TeamView(TemplateView):
         context["members"] = members
         
         return context
+    
+from django.conf import settings
+def book_meeting(request):
+    if request.method == 'POST' and request.POST.get('email'):
+        email = request.POST.get('email')
+        request.session['book_email'] = email
+        member = settings.CONSULTANT_EMAIL
+        member_name = settings.CONSULTANT_NAME
+        send_email(
+            recipient= member, 
+            subject= "Consultation Request", 
+            template_name="email/consultation.html",
+            context={
+                "member": member_name,
+                "email": email
+            }
+        )
+    return redirect('core:landing')

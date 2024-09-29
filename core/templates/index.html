@@ -20,15 +20,7 @@
                 We Offering Tailored Solutions Across Industries to Empower Your Business Growth and Drive Results with Confidence! 
             </div>
 
-            <!-- <div class=" animate-slidein  opacity-0 [--slidein-delay:600ms]"> -->
-            <div>
-                <p class="text-lime-400 my-5">Try out a 30 minutes consultation</p>
-                <form class="bg-white/20 pl-4 pr-2 py-2 rounded-full flex items-center max-w-max">
-                    <i class="fa-regular fa-envelope mx-2 text-lg"></i>
-                    <input required type="email" placeholder="Your email address...." class="focus:outline-none bg-transparent px-4 placeholder:text-lime-50 placeholder:text-opacity-50">
-                    <button class="flex-shrink-0 text-nowrap py-2 px-3 rounded-full text-lime-400 bg-slate-800">Book Me!</button>
-                </form>
-            </div>
+            {% include "components/book-meeting.html" %}
 
         </div>
         
@@ -97,7 +89,14 @@
 {% include "components/partners-slider.html" %}
 
 <section class="overflow-hidden relative">
-    <div class="p-10 md:p-20 bg-primary-500/70 min-h-60 aspect-[3/1] grid  place-items-center relative z-10">
+
+    <video 
+        src="{% static 'assets/background/woman_md.mp4' %}" 
+        class="absolute top-0 min-h-full w-auto sm:h-auto sm:min-w-full z-0 "
+        autoplay
+        loop
+    ></video>
+    <div class="p-10 md:p-20 bg-primary-500/70 min-h-60 aspect-[3/1] grid  place-items-center relative z-0">
         <div class="grid place-items-center gap-5 sm:gap-10 w-full">
             <h1 class="text-4xl font-semibold tracking-tighter text-white sm:text-left">
                 <span>Ready To Start </span>
@@ -114,13 +113,6 @@
             </div>
         </div>
     </div>
-
-    <video 
-        src="{% static 'assets/background/woman_md.mp4' %}" 
-        class="absolute top-0 min-h-full w-auto sm:h-auto sm:min-w-full z-0 "
-        autoplay
-        loop
-    ></video>
 
 </section>
 

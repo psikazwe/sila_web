@@ -1,0 +1,31 @@
+<div>
+    <p class="text-lime-400 my-5">Try out a 30 minutes consultation</p>
+    <form class="bg-white/20 pl-4 pr-2 py-2 rounded-full flex items-center max-w-max" method="post" action="{% url 'core:book' %}">
+        <i class="fa-regular fa-envelope mx-2 text-lg"></i>
+        <input required type="email" name="email" placeholder="Your email address...." class="focus:outline-none bg-transparent px-4 placeholder:text-lime-50 placeholder:text-opacity-50">
+        <button class="flex-shrink-0 text-nowrap py-2 px-3 rounded-full text-lime-400 bg-slate-800">Book Me!</button>
+        {% csrf_token %}
+    </form>
+</div>
+
+{% if book_email %}
+
+<section class="modal active !z-50">
+    <div class="content">
+        <div class="buttons">
+        </div>
+        <div class="body">
+            <div class="py-5 text-slate-700 text-center max-w-screen-md">
+                <div class="mb-10">
+                    <h1 class="text-2xl md:text-4xl font-normal tracking-tighter text-primary-500 mb-2.5">Sent !</h1>
+                    <p class="text">Your request for a 30 minutes consultation meeting has be sent!</p>
+                    <p class="text mb-2.5">We'll get back to you soon using the email below</p>
+                    {{ book_email }}
+                </div>
+                <button type="button" class="button big outline close">Ok</button>
+            </div>
+        </div>
+    </div>
+</section>
+  
+{% endif %}
