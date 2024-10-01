@@ -389,9 +389,10 @@ body{
 }
 
 .team-member{
-    @apply  grid sm:grid-cols-[128px_2fr] gap-5 !w-full cursor-pointer transition-all;
+    @apply  grid sm:grid-cols-[128px_2fr] md:grid-cols-[200px_2fr] gap-5 md:gap-10 !w-full cursor-pointer transition-all p-5 rounded-xl;
 
     &:hover{
+        @apply bg-slate-100;
         .name{
             @apply text-primary-500;
         } 
@@ -401,11 +402,11 @@ body{
         @apply pointer-events-none;
     }
     .cover{
-        @apply bg-slate-200 aspect-[1/1];
+        @apply bg-slate-200 aspect-[1/1] rounded-lg overflow-hidden;
     }
 
     .details{
-        @apply border-b pb-2.5 mb-2.5;
+        @apply pb-2.5 mb-2.5;
         .socials{
             @apply space-x-5 space-y-5 py-5 text-xl;
             *{
@@ -414,6 +415,10 @@ body{
             a{
                 @apply w-max inline-block;
             }
+        }
+
+        .member-links{
+            @apply hidden;
         }
     }
     .name{
@@ -430,7 +435,10 @@ body{
         @apply text-sm font-light text-slate-500; 
     }
     &.full{
-        @apply cursor-default;
+        @apply cursor-default bg-slate-100;
+        *{
+            @apply pointer-events-auto;
+        }
         &:hover{
             .name{
                 @apply text-slate-700;
@@ -444,6 +452,9 @@ body{
             @apply tracking-tighter font-semibold text-2xl;
         }
         .description{
+            @apply block;
+        }
+        .member-links{
             @apply block;
         }
     }

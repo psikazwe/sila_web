@@ -13,12 +13,88 @@
   {% endif %}
 </div>
 
-  <h2 class="font-bold text-2xl mb-5">{{ member.name }}</h2>
-  <p class="text-sm text-gray-600">{{ member.description }}</p>
+  <div class="team-member full">
+        
+      <div class="cover">
+          {% if member.avatar %}
+            <img src="{{ member.avatar.url }}" alt="">
+          {% endif %}
+      </div>
+
+      <div class="space-y-3">
+
+          <div class="details">
+              <h3 class="name">{{ member.name }}</h3>
+              <p class="position">{{ member.position }}</p>
+              <div class="socials">
+
+                  {% if member.instagramURL %}
+                    <a href="{{ member.instagramURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                          <i class="fa-brands fa-instagram text-xl"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.facebookURL %}
+                    <a href="{{ member.facebookURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                      <i class="fa-brands fa-facebook"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.linkedinURL %}
+                    <a href="{{ member.linkedinURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                      <i class="fa-brands fa-linkedin"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.youtubeURL %}
+                    <a href="{{ member.youtubeURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                      <i class="fa-brands fa-youtube"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.tiktokURL %}
+                    <a href="{{ member.tiktokURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                      <i class="fa-brands fa-tiktok"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.webURL %}
+                    <a href="{{ member.webURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                          <i class="fa-solid fa-globe"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+                  {% if member.xURL %}
+                    <a href="{{ member.webURL }}" target="_blank" rel="noopener noreferrer">
+                      <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
+                          <i class="fa-brands fa-x-twitter fa-fw"></i>
+                      </button>
+                    </a>
+                  {% endif %}
+
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+  <hr class="my-10"/>
+
   <div class="flex items-center gap-4 my-10">
     <a href="{% url 'admin:member-update' member.id %}" class="button dashed"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
     <a href="{% url 'admin:member-delete' member.id %}" class="button danger"> <i class="fa-regular fa-trash-can"></i> Delete</a>
   </div>
 
-<hr class="my-10"/>
 {% endblock %}

@@ -1,4 +1,4 @@
-from core.models import Affiliate
+from core.models import Member
 from django.utils.html import format_html
 from django_tables2 import SingleTableMixin, tables
 from django_tables2.columns import Column
@@ -31,7 +31,7 @@ class AvatarColumn(Column):
 class NameColumn(Column):  # Custom column for the name field
     def render(self, record):
         view_details_url = reverse('admin:member-detail', args=[record.id])
-        formatted_name = format_html('<a href="{}" class="link"><span class="value">{}</span></a>',view_details_url, record.id)
+        formatted_name = format_html('<a href="{}" class="link"><span class="value">{}</span></a>',view_details_url, record.name)
         return mark_safe(formatted_name)
     
 class IsActiveColumn(Column):  # Custom column for the name field
@@ -49,14 +49,15 @@ class Table(SingleTableMixin,tables.Table):
     actions = ActionsColumn(verbose_name="Actions")
     is_active = IsActiveColumn()
     avatar = AvatarColumn()
+    name = NameColumn()
     class Meta:
-        model = Affiliate
+        model = Member
         attrs = {"class": "custom_table"}
-        sequence = ('avatar', 'name', 'actions')
-        exclude = ( 'facebookURL', 'instagramURL', 'linkedinURL', 'youtubeURL', 'whatsappURL', 'tiktokURL', 'is_active', 'description', 'code', 'id' )
+        sequence = ( 'name', 'position', 'actions')
+        exclude = ( 'facebookURL','avatar', 'logo', 'xURL', 'webURL', 'instagramURL', 'linkedinURL', 'youtubeURL', 'whatsappURL', 'tiktokURL', 'is_active', 'description', 'code', 'id' )
 
 
 class Filter(FilterSet):
     class Meta:
-        model = Affiliate
+        model = Member
         fields = {"name": ["contains"]}

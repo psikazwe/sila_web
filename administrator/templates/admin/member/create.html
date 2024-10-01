@@ -11,22 +11,17 @@
       <div class="lg:col-span-2  xl:col-span-3 flex flex-col">
         <div class="flex-grow space-y-2.5">
           {% for field in form %}
-            {% if field.name != "avatar" %}
               <div class="field">
                 <label for="{{ field.auto_id }}">{{ field.label }}</label>
                 <div class="error text-xs text-red-600 font-light">
                   {% if field.errors %}
                       {% for error in field.errors %}
                         {{ error }}
-                        {% if "activation" in error %}
-                            <a href="{% url 'admin:user-verify' %}?{{field.name}}={{field.value}}" class="text-blue-500 hover:text-blue-700">Verify Activation</a>
-                        {% endif %}
                       {% endfor %}
                   {% endif %}
                 </div>
                 {{ field }}
               </div>
-            {% endif %}
           {% endfor %}
         </div>
     

@@ -228,6 +228,7 @@ class Member(models.Model):
     linkedinURL = models.CharField(max_length= 250, blank= True)
     whatsappURL = models.CharField(max_length= 250, blank= True)
     tiktokURL = models.CharField(max_length= 250, blank= True)
+    xURL = models.CharField(max_length= 250, blank= True)
     webURL = models.CharField(max_length= 250, blank= True)
     def __str__(self):
         return self.name
@@ -246,6 +247,7 @@ class Affiliate(models.Model):
     linkedinURL = models.CharField(max_length= 250, blank= True)
     whatsappURL = models.CharField(max_length= 250, blank= True)
     tiktokURL = models.CharField(max_length= 250, blank= True)
+    xURL = models.CharField(max_length= 250, blank= True)
     webURL = models.CharField(max_length= 250, blank= True)
     def __str__(self):
         return self.name
