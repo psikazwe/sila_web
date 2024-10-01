@@ -52,16 +52,23 @@
                           </a>
                         {% endif %}
 
-                        {% if affiliate.webURL %}
+
+                        {% if affiliate.xURL %}
                           <a href="{{ affiliate.webURL }}" target="_blank" rel="noopener noreferrer">
                             <button class=" rounded-full p-2 bg-slate-100 hover:bg-slate-200 grid place-items-center h-10 w-10">
-                            <i class="fa-brands fa-tiktok"></i>
+                                <i class="fa-brands fa-x-twitter fa-fw"></i>
                             </button>
                           </a>
                         {% endif %}
 
                     </div>
-                    <hr class="mb-5">
+                    
+                    {% if affiliate.webURL %}
+                        <a href="{{ affiliate.webURL }}" target="_blank" rel="noopener noreferrer">
+                        <p class="text-sm text-blue-500 hover:underline">Visit their website</p>
+                        </a>
+                    {% endif %}
+                    <hr class="my-5">
                     <div class="description"> {{ affiliate.description }}</div>
                 </div>
             </div>
