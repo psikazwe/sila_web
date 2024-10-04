@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, confirm_signup, Logout, Login
+from .views import index, confirm_signup, Logout, Login, ForgotPassword
 from . import views
 
 urlpatterns = [
@@ -7,6 +7,7 @@ urlpatterns = [
     path("confirm_signup", confirm_signup, name="confirm_signup"),
     path('logout',Logout, name='logout'),
     path('login',Login, name='login'),
+    path('forgot-password',ForgotPassword, name='forgot-password'),
     path('book', views.book_meeting, name='book'),
     path("about", views.AboutUsView.as_view(), name="us"),
     path("event", views.EventListView.as_view(), name="event"),

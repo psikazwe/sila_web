@@ -7,6 +7,7 @@ from . import models
 from . import forms
 from django.views.generic import TemplateView, ListView, DetailView
 from .lib.email_services import send_email
+from .lib.utils import generate_random_password
 # Create your views here.
 def index(request):
     services =  models.Service.objects.all()
@@ -74,6 +75,35 @@ def Login(request):
             return redirect('client:index')
         
     return render( request, 'login.html', context)
+
+def ForgotPassword(request):
+    
+    if request.user.is_authenticated:
+        if request.user.is_superuser:
+            return redirect('admin:index')
+        return redirect('client:index')
+    context= {
+        'form': forms.ForgotPasswordForm()
+    }
+    if request.method == 'POST':
+        context['form'] = forms.ForgotPasswordForm(request.POST)
+        if context['form'].is_valid():
+            user = context['form'].getUser()
+            new_password = generate_random_password()
+            user.set_password(new_password)
+            user.save()
+            send_email(
+                recipient= user.email, 
+                subject= "Password Reset", 
+                template_name="email/forgot_password.html",
+                context={
+                    "password":  new_password,
+                    "email": user.email
+                }
+            )
+            messages.success(request, f"Your new password has been sent to {user.email} ")
+            return redirect("admin:index")
+    return render( request, 'forgot_password.html', context)
 
 
 class AboutUsView(TemplateView):

@@ -27,7 +27,7 @@
     </div>
 
     <!-- content  -->
-    <div class="bg-gradient-to-tr from-slate-800/90 to-transparent pt-10 relative z-10">
+    <div class="bg-gradient-to-tr from-slate-800/90 to-transparent pt-10 relative z-10 hidden md:!block">
     
         <div class="px-10 md:px-20  space-y-7 py-10 md:py-20 relative z-10 ">
             <h1 class="text-4xl font-semibold tracking-tighter !text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
@@ -38,28 +38,52 @@
             {{ category.description }}
             </p>
     
-            <button class="button primary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply For Service</button>  
+            <div>
+                <a href="tel:+260968666009">
+                    <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Service</button>  
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="aspect-[2/1] block md:hidden"></div>
+</div>
+
+<div class=" pt-10 relative z-10 block md:!hidden">
+    
+    <div class="px-10 md:px-20  space-y-7 py-10 md:py-20 relative z-10 ">
+        <h1 class="text-xl font-semibold tracking-tighter !text-slate-800  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+            <span>{{category.name}}</span>
+        </h1>
+
+        <p class="text !text-slate-800 max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+        {{ category.description }}
+        </p>
+
+        <div>
+            <a href="tel:+260968666009">
+                <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Service</button>  
+            </a>
         </div>
     </div>
 </div>
 
 
-
-<div class="px-10 md:px-20 my-20 py-5  animate-slidein  opacity-0 [--slidein-delay:900ms]">
+<div class="px-10 md:px-20 py-5 md:py-10  animate-slidein  opacity-0 [--slidein-delay:900ms]">
     
-    <h1 class="text-2xl md:text-4xl text-center font-normal tracking-tighter">All Our Core Business models are offered to all </h1>
-    <div class="grid grid-cols-3 gap-10 mt-10">
-        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
-            <i class="fa-regular fa-comments text-base md:text-2xl text-primary-500 mr-2"></i>
-            <span class="text-lg font-normal mb-2.5">Consultation</span>
+    <h1 class="text-xl md:text-4xl text-center font-normal tracking-tighter">All Our Core Business models are offered to all </h1>
+    <div class="grid lg:grid-cols-3 gap-2.5 xl:gap-10 mt-10">
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-left">
+            <i class="fa-regular fa-comments text-base xl:text-xl text-primary-500 mr-2"></i>
+            <span class="text-base lg:text-base font-normal mb-2.5">Consultation</span>
         </div>
-        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
-            <i class="fa-solid fa-hand-holding-dollar  text-base md:text-2xl text-primary-500 mr-2"></i>
-            <span class="text-lg font-normal mb-2.5">Endorsement and Sponsorship</span>
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-left">
+            <i class="fa-solid fa-hand-holding-dollar  text-base xl:text-xl text-primary-500 mr-2"></i>
+            <span class="text-base lg:text-base font-normal mb-2.5">Endorsement and Sponsorship</span>
         </div>
-        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-center">
-            <i class="fa-solid fa-gears text-base md:text-2xl text-primary-500 mr-2"></i>
-            <span class="text-lg font-normal mb-2.5">Manage Services Opertations</span>
+        <div class=" py-2.5 px-5  rounded-full bg-slate-100 text-left">
+            <i class="fa-solid fa-gears text-base xl:text-xl text-primary-500 mr-2"></i>
+            <span class="text-base lg:text-base font-normal mb-2.5">Manage Services Opertations</span>
         </div>
     </div>
 </div>  
@@ -68,8 +92,8 @@
 
 <div class="px-10 md:px-20  animate-slidein  opacity-0 [--slidein-delay:1200ms] my-20">
     
-    <p class="text-xl md:text-2xl text-center font-normal tracking-tighter mb-10">Common Services Offered Under {{category.name}}</p>
-    <div class="grid grid-cols-2 gap-10">
+    <p class="text-xl md:text-4xl text-center font-normal tracking-tighter mb-10">Common Services Offered Under {{category.name}}</p>
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-2.5">
         {% for service in category.services.all %}
         <h1 class="text-base font-normal tracking-tighter">
             <span class="mr-2">

@@ -21,12 +21,12 @@ body{
 }
 
 .search-row {
-    @apply flex border gap-2 pl-2 rounded-lg max-w-sm  items-center overflow-hidden;
+    @apply flex border gap-2 pl-2 rounded-lg w-max  items-center overflow-hidden;
     label{
         @apply text-sm text-slate-400;
     }
     input{
-        @apply flex-grow py-1 focus:outline-none;
+        @apply w-44 md:w-64 py-1 focus:outline-none;
         
     }
 
@@ -540,3 +540,10 @@ body{
     } 
 }
   
+
+.panel-link{
+    @apply grid sm:grid-cols-2  lg:grid-cols-3 gap-5 py-10;
+    a{
+        @apply p-5 rounded-md border hover:bg-slate-100 hover:text-primary-600;
+    }
+}

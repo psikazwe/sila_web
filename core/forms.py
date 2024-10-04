@@ -39,3 +39,26 @@ class LoginForm(forms.Form):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = input_style
+
+class ForgotPasswordForm(forms.Form):
+    email = forms.CharField(max_length=50, label="Email", required=True, widget=forms.TextInput(attrs={'placeholder':'Email'}))
+    def clean_email(self):
+        cleaned_data = super().clean()
+        email = cleaned_data['email']
+        # do your cleaning here
+        if not email:
+            raise forms.ValidationError({"email":"email is required"})
+        try:
+            models.User.objects.get(email__iexact=email)
+            return email
+        except models.User.DoesNotExist:
+            raise forms.ValidationError({"email":"email is not registered with us."})
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = input_style
+    
+    def getUser(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        return models.User.objects.get(email__iexact=email)

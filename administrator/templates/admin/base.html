@@ -28,19 +28,14 @@
 
                     
     <aside class="sidebar">
-        <a href="{% url "admin:index" %}" class='mb-5'>
-            SGS
+        <a href="{% url "admin:index" %}" class='mb-5 font-semibold'>
+            SILA<span class="text-primary-600 ">GLOBAL</span>
         </a>
         <div class="flex flex-col justify-between flex-1 mt-6">
             <nav>
                 <a  href="{% url "admin:index" %}">
                     <i class="fa-solid fa-border-all"></i>
                     <span class="mx-4 font-medium">Dashboard</span>
-                </a>
-
-                <a href="{% url "admin:article-list" %}">
-                    <i class="fa-regular fa-newspaper"></i>
-                    <span class="mx-4 font-medium">Articles</span>
                 </a>
 
                 <a href="{% url "admin:service-list" %}">

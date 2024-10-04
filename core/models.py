@@ -218,6 +218,7 @@ class Member(models.Model):
     def get_media_upload_path(instance, filename):
         return f'members/{filename}'
     name = models.CharField(max_length= 100)
+    email = models.EmailField(blank=True)
     position = models.CharField(max_length= 100, blank=True)
     description = models.CharField(max_length= 500, blank=True)
     avatar =models.ImageField(upload_to =get_media_upload_path, blank=True)
@@ -237,6 +238,7 @@ class Affiliate(models.Model):
     def get_media_upload_path(instance, filename):
         return f'affliates/{filename}'
     name = models.CharField(max_length= 50, unique= True)
+    email = models.EmailField(blank=True)
     code = models.CharField(max_length= 50, unique= True)
     description = models.CharField(max_length= 500)
     logo =models.ImageField(upload_to =get_media_upload_path, blank=True)

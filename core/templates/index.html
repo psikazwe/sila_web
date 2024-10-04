@@ -11,13 +11,13 @@
 
     <div class="h-screen max-h-[600px] bg-gradient-to-r from-slate-800/80 to-transparent text-white flex flex-col justify-end relative z-10 py-20 ">
     
-        <div class="p-10 sm:p-20 md:max-w-[50%]">
+        <div class="p-10 sm:p-20 2xl:max-w-[50%]">
     
             <div class="mb-4">
                 <div class="text-lime-300 text-2xl sm:text-4xl font-normal tracking-tighter">Grow your business with us!</div>
             </div>
             <div>
-                We Offering Tailored Solutions Across Industries to Empower Your Business Growth and Drive Results with Confidence! 
+                We Offer Tailored Solutions Across Industries to Empower Your Business Growth and Drive Results with Confidence! 
             </div>
 
             {% include "components/book-meeting.html" %}
@@ -96,36 +96,33 @@
         autoplay
         loop
     ></video>
-    <div class="p-10 md:p-20 bg-primary-500/70 min-h-60 aspect-[3/1] grid  place-items-center relative z-0">
-        <div class="grid place-items-center gap-5 sm:gap-10 w-full">
-            <h1 class="text-4xl font-normal tracking-tighter text-white sm:text-left">
+    <div class="p-10 md:p-20 bg-primary-500/70 min-h-60 md:aspect-[3/1] grid  place-items-center relative z-0">
+        <div class="text-center space-y-2.5">
+
+            <h1 class="text-lg md:text-4xl font-normal tracking-tighter text-white">
                 <span>Ready To Start </span>
                 <span class="text-lime-400">Your Growth ?</span>
             </h1>
     
-            <div class="flex sm:justify-end justify-start">
-                <div>
-                    <a href="tel:+260968666009" class="button secondary big">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>Call Us</span>
-                    </a>
-                </div>
-            </div>
+            <a href="tel:+260968666009" class="button secondary big">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Us</span>
+            </a>
         </div>
     </div>
 
 </section>
 
 
-<footer class="bg-slate-800  text  !text-slate-400 p-10 md:p-20">
+<footer class="bg-slate-800  text-xs  !text-slate-400 px-10 md:px-20 py-5">
 
-    <div class=" flex items-center justify-between">
+    <div class=" flex items-center flex-wrap justify-between">
 
         <div>
             &copy; {% now "Y" %}. Sila Global Solutions
         </div>
 
-        <div class="flex items-center gap-5 text-xl">
+        <div class="flex items-center gap-5">
 
             <a href="tel:+260968666009" class="text">+260968666009</a>
 
@@ -133,7 +130,7 @@
             <a href="#"><i class="fa-brands fa-instagram"></i></a> -->
             
             <a href="https://www.linkedin.com/in/sila-global-solutions-6b251832a/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-linkedin text-lg"></i>
             </a>
         </div>
 
