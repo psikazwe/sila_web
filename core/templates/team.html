@@ -5,7 +5,7 @@
 
 <div class=" bg-slate-200 relative object-cover  overflow-hidden">
     <img src="{% static 'assets/affiliates.webp' %}" alt="" class="absolute object-cover top-0 min-w-full min-h-full w-auto h-auto z-0">
-    <div class="bg-gradient-to-tr from-slate-800/90 to-transparent pt-10 relative z-10">
+    <div class="bg-gradient-to-tr from-slate-800/90 to-transparent pt-10 relative z-10 hidden md:!block">
         <div class="px-10 md:px-20  space-y-7 py-20 ">
     
             {% if request.GET.order and request.GET.order == 'a' %} 
@@ -37,6 +37,37 @@
             </div>
         </div>
     </div>
+    <div class="aspect-[2/1] block md:hidden"></div>
+</div>
+
+<div class=" pt-10 px-10 relative z-10 block md:!hidden space-y-5">
+  {% if request.GET.order and request.GET.order == 'a' %} 
+    <h1 class="text-4xl font-normal tracking-tighter animate-slidein  opacity-0 [--slidein-delay:100ms]">
+        <span>Affiliated with</span>
+        <div class="text-primary-400 otuline-1 outline-white">Global Veteran Companies</div>
+    </h1>
+
+    <p class="text  max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+        We are actively engaged with Companies across all major global marketing sectors, providing comprehensive consulting and endorsement services to businesses seeking to expand their international presence. . 
+    </p>
+  {% else %}
+    <h1 class="text-4xl font-normal tracking-tighter  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+        <span>Exceptional Service From</span>
+        <div class="text-primary-400 otuline-1 outline-white">Our Dedicated Team</div>
+    </h1>
+
+    <p class="text  max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+        Our team consists of skilled professionals dedicated to delivering high-quality digital solutions. We combine creative vision with technical expertise to craft impactful digital experiences. Our collaborative approach with global partners ensures we tailor our services to meet each client's unique needs, helping businesses thrive in the global marketplace. 
+    </p>
+
+  {% endif %}
+
+
+  <div>
+    <a href="tel:+260968666009">
+        <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+    </a>
+  </div>
 </div>
 
 <section class="grid grid-cols-1 gap-y-40 py-10 pb-20  animate-slidein  opacity-0 [--slidein-delay:600ms]">

@@ -1,9 +1,9 @@
 <div>
-    <p class="text-lime-400 my-5">Try out a 30 minutes consultation</p>
-    <form class="bg-white/20 pl-4 pr-2 py-2 rounded-full flex items-center max-w-max" method="post" action="{% url 'core:book' %}">
+    <p class="text-lime-500 md:text-lime-400 my-5">Try out a 30 minutes consultation</p>
+    <form class="bg-slate-800/20 md:bg-white/20 pl-4 pr-2 py-2 rounded-full flex items-center max-w-max" method="post" action="{% url 'core:book' %}">
         <i class="fa-regular sm:inline-block hidden fa-envelope mx-2 text-lg"></i>
-        <input required type="email" name="email" placeholder="Your email address...." class="focus:outline-none bg-transparent px-4 placeholder:text-lime-50 placeholder:text-opacity-50 w-48">
-        <button class="flex-shrink-0 text-nowrap py-2 px-3 rounded-full text-lime-400 bg-slate-800">
+        <input required type="email" name="email" placeholder="Your email address...." class="focus:outline-none bg-transparent px-4 md:placeholder:text-lime-50 placeholder:text-opacity-50 w-48">
+        <button class="flex-shrink-0 text-nowrap py-2 px-3 rounded-full text-lime-500 md:text-lime-400 bg-slate-800">
             <i class="fa-solid fa-paper-plane"></i>
             <span class="hidden sm:inline-block">Book Me!</span>
         </button>
