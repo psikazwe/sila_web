@@ -79,8 +79,8 @@ class UserCreationForm(forms.Form):
 class NewUserForm(forms.ModelForm):
     role = forms.ChoiceField(choices=[
         ('ADMIN', 'Admin'),
-        ('STAFF', 'Staff'),
-        ('CLIENT', 'Client')
+        # ('STAFF', 'Staff'),
+        # ('CLIENT', 'Client')
     ], required=True)
 
     class Meta:
