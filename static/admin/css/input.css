@@ -514,12 +514,12 @@ body{
 .modal{
     @apply fixed w-screen h-screen bg-transparent backdrop-blur-sm top-0 left-0 z-50 pointer-events-none backdrop-opacity-0 transition-colors duration-300;
     .content{
-        @apply w-screen left-0 px-10 md:px-20  pb-10 md:pb-20  absolute min-h-[55%] max-h-full rounded-t-2xl shadow-md bg-white transition-all opacity-0 -bottom-40 delay-100 ease-in-out ;
+        @apply w-screen left-0 px-2.5 md:px-20  pb-10 md:pb-20  absolute min-h-[55%] max-h-full rounded-t-2xl shadow-md bg-white transition-all opacity-0 -bottom-40 delay-100 ease-in-out ;
         .buttons{
-            @apply py-5 md:py-10 content-wrapper flex justify-end;
+            @apply py-5 md:py-10 flex justify-end;
         }
         .body{
-            @apply content-wrapper flex-grow max-h-[calc(100vh_-_150px)] overflow-y-auto;
+            @apply flex-grow max-h-[calc(100vh_-_150px)] overflow-y-auto;
         }
     }
 
