@@ -3,14 +3,14 @@ from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormView
-from core.models import Service, Category, Article, User, Affiliate, Member
+from core.models import Service, Category, Article, User, Affiliate, Member,Program
 from django.urls import reverse_lazy
-from .forms import ServiceForm, CategoryForm, ArticleForm, UserForm, UserCreationForm, UserTokenVerifyForm, NewUserForm, AffiliateForm, MemberForm
+from .forms import ServiceForm, CategoryForm, ArticleForm, UserForm, ProgramForm, UserTokenVerifyForm, NewUserForm, AffiliateForm, MemberForm
 from core.lib.email_services import send_email
 
 # Tables import 
 
-from administrator.tables import services_table, categories_table, articles_table, users_table, affiliate_table, members_table
+from administrator.tables import services_table, categories_table, articles_table, users_table, affiliate_table, members_table, program_table
 
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
@@ -182,6 +182,35 @@ class ArticleDeleteView(LoginRequiredMixin,DeleteView):
     template_name = 'admin/article/delete.html'
     success_url = reverse_lazy('admin:article-list')
 
+
+# programs 
+class ProgramListView(LoginRequiredMixin,SingleTableMixin, FilterView):
+    table_class = program_table.Table
+    queryset = Program.objects.all()
+    template_name = 'admin/program/list.html'
+    filterset_class = program_table.Filter
+    paginate_by= 10
+
+class ProgramDetailView(LoginRequiredMixin,DetailView):
+    model = Program
+    template_name = 'admin/program/details.html'
+    
+class ProgramCreateView(LoginRequiredMixin,CreateView):
+    model = Program
+    form_class = ProgramForm
+    template_name = 'admin/program/create.html'
+    success_url = reverse_lazy('admin:program-list')
+
+class ProgramUpdateView(LoginRequiredMixin,UpdateView):
+    model = Program
+    form_class = ProgramForm
+    template_name = 'admin/program/edit.html'
+    success_url = reverse_lazy('admin:program-list')
+
+class ProgramDeleteView(LoginRequiredMixin,DeleteView):
+    model = Program
+    template_name = 'admin/program/delete.html'
+    success_url = reverse_lazy('admin:program-list')
 
 # Users 
 class UserListView(LoginRequiredMixin,SingleTableMixin, FilterView):

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<div class="relative bg-black">
+
+    
+    <!-- slider -->
+    <div class="absolute object-cover top-0 bottom-0 left-0 right-0 z-0">
+        <div class="carousel-container" id="service-banner">
+            <div class="wrapper">
+                {% if program.cover %}
+                <div class="slide"
+                    style=" 
+                        background-image: url({{ program.cover.url }});
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: right;
+                    "
+                >
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- content  -->
+    <div class="bg-gradient-to-tr from-black to-transparent pt-10 relative z-10 hidden md:!block">
+    
+        <div class="px-10 md:px-20 py-10 md:py-20 relative z-10 ">
+            <h1 class="text-4xl font-normal tracking-tighter !text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+                <span>{{ program.title }}</span>
+            </h1>
+    
+            <p class="text !text-slate-400 max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+                {{ program.category }}
+            </p>
+            
+            <div class="mt-10">
+                {% if program.link %}
+                  
+                    <a href="{{program.link}}" target="_blank">
+                        <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
+                </a>
+                {% else %}
+                    <a href="tel:+260968666009">
+                        <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiriess</button>  
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="aspect-[2/1] block md:hidden"></div>
+</div>
+
+<div class=" pt-10 relative z-10 block md:!hidden">
+    
+    <div class="px-10 md:px-20 py-10 md:py-20 relative z-10 ">
+        <h1 class="text-2xl md:text-4xl font-normal tracking-tighter  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+            <span>{{ program.title }}</span>
+        </h1>
+
+        <p class="text max-w-xl !text-slate-500  animate-slidein  opacity-0 [--slidein-delay:300ms]">{{ program.category }} </p>
+        
+        <div class="mt-5">
+            {% if program.link %}
+              
+                <a href="{{program.link}}" target="_blank">
+                    <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
+            </a>
+            {% else %}
+                <a href="tel:+260968666009">
+                    <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="px-10 md:px-20 pt-5 pb-10   animate-slidein  opacity-0 [--slidein-delay:300ms]">
+    <div class="rich-text">
+        {{ program.body|safe }}
+    </div>  
+</div>
+
+
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+
+    <script>
+        const images = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, key) => {
+                img.style.opacity = (index === key) ? 1 : 0;
+            });
+        }
+
+        function transitionImage() {
+            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(transitionImage, 5000); // Change image every 5 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            transitionImage();
+        });
+
+    </script>
+
+{% endblock scripts %}

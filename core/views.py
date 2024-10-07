@@ -91,7 +91,7 @@ def ForgotPassword(request):
             user = context['form'].getUser()
             new_password = generate_random_password()
             user.set_password(new_password)
-            user.save()
+            user.save() 
             send_email(
                 recipient= user.email, 
                 subject= "Password Reset", 
@@ -138,6 +138,23 @@ class EventDetailView(DetailView):
     template_name = "event/detail.html"
 
 
+class ProgramListView(TemplateView):
+    template_name = "program/list.html"
+    def  get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        programs = models.Program.objects.filter(is_active = True).order_by('title')
+        # Fetch services with covers
+        programs_with_covers = programs.filter(cover__isnull=False)
+        # Limit to 4 items
+        covers = programs_with_covers if programs_with_covers.count() < 4 else programs_with_covers[:4]
+        # Add covers to the context
+        context["covers"] = covers
+        context["program_list"] = programs
+        return context
+
+class ProgramDetailView(DetailView):
+    model = models.Program
+    template_name = "program/detail.html"
 
 class ServiceListView(TemplateView):
     template_name = "service/list.html"

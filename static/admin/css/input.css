@@ -547,3 +547,12 @@ body{
         @apply p-5 rounded-md border hover:bg-slate-100 hover:text-primary-600;
     }
 }
+
+.rich-text{
+    p{
+        @apply py-5;
+    }
+    a{
+        @apply !text-primary-500 hover:underline;
+    }
+}

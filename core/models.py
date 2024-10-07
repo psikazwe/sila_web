@@ -253,3 +253,16 @@ class Affiliate(models.Model):
     webURL = models.CharField(max_length= 250, blank= True)
     def __str__(self):
         return self.name
+    
+
+
+class Program(models.Model):
+    def get_media_upload_path(instance, filename):
+        return f'{instance.category}/program/{filename}'
+    cover =models.ImageField(upload_to = get_media_upload_path, blank=True)
+    title = models.CharField(max_length= 50, unique= True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="program")
+    published_at = models.DateTimeField(default=timezone.now)
+    body =  RichTextField(verbose_name = "body", blank = True, null = True)
+    link = models.CharField(max_length=500, verbose_name='application link')
+    is_active = models.BooleanField(default=True)

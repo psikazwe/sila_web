@@ -1,5 +1,5 @@
 from django import forms
-from core.models import Service, Category, Article, User, OTP, Affiliate, Member
+from core.models import Service, Category, Article, User, OTP, Affiliate, Member, Program
 from django.urls import reverse
 from core.lib.utils import generate_random_password
 
@@ -22,6 +22,11 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'service', 'cover', 'body', ]
+
+class ProgramForm(forms.ModelForm):
+    class Meta:
+        model = Program
+        fields = ['title', 'category', 'cover', 'body', 'link', 'is_active']
 
 class AffiliateForm(forms.ModelForm):
     class Meta:

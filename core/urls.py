@@ -15,6 +15,8 @@ urlpatterns = [
     path("industry", views.CategoryListView.as_view(), name="industry"),
     path("service", views.ServiceListView.as_view(), name="service"),
     path("service/<int:pk>", views.ServiceDetailView.as_view(), name="service-detail"),
+    path("program", views.ProgramListView.as_view(), name="program"),
+    path("program/<int:pk>", views.ProgramDetailView.as_view(), name="program-detail"),
     path("blog", views.AboutUsView.as_view(), name="blog"),
     path("team", views.TeamView.as_view(), name="team"),
 

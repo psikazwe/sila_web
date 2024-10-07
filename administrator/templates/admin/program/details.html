@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  
+  
+  
+
+  <div class="flex items-base justify-between gap-5 col-span-2">
+    <a href="{% url 'admin:program-list' %}" class="text-sm">&larr; Back to Programs</a>
+  </div>
+
+  <div class='program-container'>
+
+    
+    <div class=" my-5">
+    
+      <div class="aspect-[5/2]  rounded-lg bg-gray-50 overflow-hidden lg:col-span-2 xl:col-span-2 object-fill">
+        <!-- Check if the cover image exists -->
+
+        {% if program.cover %}
+        <div class="h-full w-full" 
+            style=" 
+                background-image: url({{ program.cover.url }});
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: right;
+            "
+        >
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="my-10">
+      <h1 class="title">{{  program.title }} </h1>
+      <a href="{% url 'admin:category-detail' program.category.id %}"><sub class="text-gray-500">{{ program.category }}</sub></a>   - 
+      <sub class="text-gray-500">{{ program.published_at }}</sub>
+      
+
+      <div class="flex items-center gap-4 my-5">
+        <a href="{% url 'admin:program-update' program.id %}" class="button dashed"> <i class="fa-regular fa-pen-to-square"></i> Edit</a>
+        <a href="{% url 'admin:program-delete' program.id %}" class="button danger"> <i class="fa-regular fa-trash-can"></i> Delete</a>
+      </div>
+    </div>
+
+    <div class="rich-text">
+      {{ program.body|safe }}
+    </div>
+
+  </div>
+
+{% endblock %}

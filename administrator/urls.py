@@ -38,6 +38,13 @@ urlpatterns = [
     path('article/<int:pk>/update', views.ArticleUpdateView.as_view(), name='article-update'),
     path('article/<int:pk>/delete', views.ArticleDeleteView.as_view(), name='article-delete'),
 
+    # Progrmas url 
+    path('program', views.ProgramListView.as_view(), name='program-list'),
+    path('program/<int:pk>', views.ProgramDetailView.as_view(), name='program-detail'),
+    path('program/create', views.ProgramCreateView.as_view(), name='program-create'),
+    path('program/<int:pk>/update', views.ProgramUpdateView.as_view(), name='program-update'),
+    path('program/<int:pk>/delete', views.ProgramDeleteView.as_view(), name='program-delete'),
+
     # Users url 
     path('user', views.UserListView.as_view(), name='user-list'),
     path('user/<int:pk>', views.UserDetailView.as_view(), name='user-detail'),

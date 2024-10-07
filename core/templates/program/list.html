@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block full_screen %}
+{% include "fixed_navbar.html" %}
+
+<div class="relative bg-black">
+
+    
+    <!-- slider -->
+    <div class="absolute object-cover top-0 bottom-0 left-0 right-0 z-0">
+        <div class="carousel-container" id="service-banner">
+            <div class="wrapper">
+                {% for item in covers %}
+                    {% if item.cover %}
+                    <div class="slide"
+                        style=" 
+                            background-image: url({{ item.cover.url }});
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: right;
+                        "
+                    >
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- content  -->
+    <div class="bg-gradient-to-tr from-black to-transparent pt-10 relative z-10 hidden md:!block">
+    
+        <div class="px-10 md:px-20 space-y-7 py-10 md:py-20 relative z-10 ">
+            <h1 class="text-4xl font-normal tracking-tighter !text-white  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+                <span>Join Us</span>
+                <div class="text-lime-400">Be on a Program</div>
+            </h1>
+    
+            <p class="text !text-white max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+                We have a variaty of programs that we run to maximize the growth potential of our clients.
+            </p>
+            
+            <div>
+                <a href="tel:+260968666009">
+                    <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="aspect-[2/1] block md:hidden"></div>
+</div>
+
+<div class=" pt-10 relative z-10 block md:!hidden">
+    
+    <div class="px-10 md:px-20 space-y-7 py-10 md:py-20 relative z-10 ">
+        <h1 class="text-4xl font-normal tracking-tighter  animate-slidein  opacity-0 [--slidein-delay:100ms]">
+            <span>Be on a Program</span>
+            <div class="text-lime-400">& Services</div>
+        </h1>
+
+        <p class="text max-w-xl  animate-slidein  opacity-0 [--slidein-delay:300ms]">
+            We have a variaty of programs that we run to maximize the growth potential of our clients.
+        </p>
+        
+        <div>
+            <a href="tel:+260968666009">
+                <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="animate-slidein  opacity-0 [--slidein-delay:1200ms] grid md:grid-cols-2  my-20 px-10 md:px-20 gap-5 md:gap-10 ">
+
+    {% if program_list %}
+        {% for program in program_list %}
+
+            <div>
+                <a href="{% url 'core:program-detail' program.id %}">
+                    <h1 class="text-lg 2xl:text-2xl text-slate-600 hover:underline">{{ program.title }}</h1>
+                </a>
+                <p class="text-sm text-slate-500 mb-5">{{ program.category }}</p>
+
+                <a href="{% url 'core:program-detail' program.id %}" class="button link">View Details</a>
+            </div>
+            
+        {% endfor %}
+    {% else %}
+      <p class="text-slate-600 text-sm md:text-xl ">We currently are not running any program at the moment. Please check back with us later. or call for inquiries</p>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock full_screen %}
+
+
+
+
+{% block scripts %}
+  
+    <!-- <script>
+
+        const sections = document.querySelectorAll('.industry');
+        let currentSectionIndex = 0;
+        let wasPrevious = false;
+
+        function handleWheel(event) {
+            event.preventDefault();
+
+            if (isAtBottom(sections[currentSectionIndex])) {
+                           
+                if (event.deltaY < 0) {
+                    // Scroll up
+                    if (currentSectionIndex > 0) {
+                        currentSectionIndex--;
+                    }
+                } else {
+                    // Scroll down
+                    if (currentSectionIndex < sections.length - 1) {
+                        currentSectionIndex++;
+                    }
+                }
+
+                const targetSection = sections[currentSectionIndex];
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+    
+            }else{
+                const postion = getElementPostion(sections[currentSectionIndex]);
+                let goTo = postion;
+                if ( wasPrevious ) {
+                    const targetSection = sections[currentSectionIndex];
+                    goTo = targetSection
+                }
+                window.scrollTo({
+                    top: goTo,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        function isAtBottom(element) {
+
+            const rect = element.getBoundingClientRect();
+            const elementFromTop = element.offsetTop;
+
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+            if(viewportHeight+2 < rect.height ){
+                wasPrevious = true;
+                return true;
+            }
+            wasPrevious = false;
+            return false;
+        }
+
+        function getElementPostion(element){
+            const rect = element.getBoundingClientRect();
+            const elementFromTop = element.offsetTop;
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            return scrollPosition + (rect.height % viewportHeight)
+        }
+
+
+        document.addEventListener('wheel', handleWheel);
+
+
+    </script> -->
+
+    <script>
+        const images = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, key) => {
+                img.style.opacity = (index === key) ? 1 : 0;
+            });
+        }
+
+        function transitionImage() {
+            showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            setTimeout(transitionImage, 5000); // Change image every 5 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            transitionImage();
+        });
+
+
+        function toggleAccordion(index) {
+            console.log(index)
+            const content = document.getElementById(`content-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            
+            console.log(content)
+
+            // SVG for Minus icon
+            const minusSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+            </svg>
+            `;
+        
+            // SVG for Plus icon
+            const plusSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+            </svg>
+            `;
+        
+            // Toggle the content's max-height for smooth opening and closing
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0';
+                icon.innerHTML = plusSVG;
+            } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+                icon.innerHTML = minusSVG;
+            }
+        }
+
+        const categorys = document.querySelectorAll('.program');
+        categorys.forEach( cat => {
+            const id = cat.id;
+            const button = cat.querySelector('.icon');
+            button?.addEventListener('click', () => {
+                toggleAccordion(id);
+            })
+        })
+
+    </script>
+
+{% endblock scripts %}
