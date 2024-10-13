@@ -26,7 +26,11 @@ class ArticleForm(forms.ModelForm):
 class ProgramForm(forms.ModelForm):
     class Meta:
         model = Program
-        fields = ['title', 'category', 'cover', 'body', 'link', 'is_active']
+        fields = ['title', 'category', 'cover', 'body', 'link', 'is_active', 'start_at', 'end_at']
+        widgets = {
+            'start_at': forms.DateInput(attrs={'type': 'date'}),
+            'end_at': forms.DateInput(attrs={'type': 'date'}),
+        }
 
 class AffiliateForm(forms.ModelForm):
     class Meta:

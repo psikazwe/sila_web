@@ -137,7 +137,7 @@ class EventDetailView(DetailView):
     model = models.Event
     template_name = "event/detail.html"
 
-
+from django.utils import timezone
 class ProgramListView(TemplateView):
     template_name = "program/list.html"
     def  get_context_data(self, **kwargs):
@@ -150,11 +150,18 @@ class ProgramListView(TemplateView):
         # Add covers to the context
         context["covers"] = covers
         context["program_list"] = programs
+        context["passed"] = programs.filter(end_at__lt = timezone.now() )
+        context["active"] = programs.filter(end_at__gt = timezone.now() )
         return context
 
 class ProgramDetailView(DetailView):
     model = models.Program
     template_name = "program/detail.html"
+    def  get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ended"] = True if context["program"].end_at < timezone.now() else False
+        context["started"] = True if context["program"].start_at < timezone.now() else False
+        return context
 
 class ServiceListView(TemplateView):
     template_name = "service/list.html"

@@ -549,6 +549,7 @@ body{
 }
 
 .rich-text{
+    @apply max-w-screen-lg space-y-5 md:py-10;
     p{
         @apply py-5;
     }

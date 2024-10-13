@@ -40,10 +40,35 @@
             
             <div class="mt-10">
                 {% if program.link %}
+
+
+                    {% if started %}                      
+                        {% if not ended %}
+                            <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                                <a href="{{program.link}}" target="_blank">
+                                    <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
+                                </a>
+                                {% if program.end_at %}
+                                    <p class="text-xs font-light text-slate-400 mt-2.5">Ending on {{ program.end_at|date  }}</p>                      
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                                <h1 class="text-red-400 ">This program has ended</h1>
+                                <p class="text-xs font-light text-slate-400">Ended on {{ program.end_at|date  }}</p>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                            <a href="tel:+260968666009">
+                                <button class="button secondary big animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiriess</button>  
+                            </a>
+                            {% if program.start_at %}
+                                <p class="text-xs font-light text-slate-400 mt-2.5">Starting on {{ program.start_at|date  }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
                   
-                    <a href="{{program.link}}" target="_blank">
-                        <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
-                </a>
                 {% else %}
                     <a href="tel:+260968666009">
                         <button class="button secondary big  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiriess</button>  
@@ -66,13 +91,38 @@
         
         <div class="mt-5">
             {% if program.link %}
+
+                {% if started %}                      
+                    {% if not ended %}
+                        <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                            <a href="{{program.link}}" target="_blank">
+                                <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
+                            </a>
+                            {% if program.end_at %}
+                                <p class="text-xs font-light text-slate-400 mt-2.5">Ending on {{ program.end_at|date  }}</p>                      
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                            <h1 class="text-red-400 ">This program has ended</h1>
+                            <p class="text-xs font-light text-slate-400">Ended on {{ program.end_at|date  }}</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="animate-slidein  opacity-0 [--slidein-delay:600ms]">
+                        <a href="tel:+260968666009">
+                            <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiriess</button>  
+                        </a>
+                        {% if program.start_at %}
+                            <p class="text-xs font-light text-slate-400 mt-2.5">Starting on {{ program.start_at|date  }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
               
-                <a href="{{program.link}}" target="_blank">
-                    <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Apply</button>  
-            </a>
             {% else %}
                 <a href="tel:+260968666009">
-                    <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiries</button>  
+                    <button class="button secondary  animate-slidein  opacity-0 [--slidein-delay:600ms]">Call For Inquiriess</button>  
                 </a>
             {% endif %}
         </div>
